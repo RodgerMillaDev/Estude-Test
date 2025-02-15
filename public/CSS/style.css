@@ -23,6 +23,27 @@
     font-family: kanitBold;
     src: url(../Media/Kanit/Kanit-Bold.ttf);
 }
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(206, 206, 206); 
+    border-radius: 8px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--sec-color); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-color); 
+  }
 body{
     background: var(--pri2-color);
     width: 100vw;
