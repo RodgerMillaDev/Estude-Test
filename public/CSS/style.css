@@ -6,8 +6,9 @@
     --pri-color:#EAEFF0;
     --pri2-color:#ffffff;
     --sec-color:#11499E;
+    --sec2-color:#3f3f3f;
     --text-color:#001F2B;
-    --ter-color:rgba(29, 171, 236, 0.582);
+    --ter-color:#1dabec94;
     --ter2-color:rgb(231, 75, 205);
 }
 @font-face {
@@ -925,4 +926,182 @@ footer{
     align-items: center;
     color: var(--text-color);
     font-size: 25px;
+}
+
+
+#Auth{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.authPlacer{
+    width: 98%;
+    height: 98%;
+    display: flex;
+    align-items: center;
+}
+.authLeft{
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+    background: url(../Media/authFoto.jpg)no-repeat center/cover;
+
+}
+.authRight{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.authRightPlacer{
+    width: 80%;
+    height: fit-content;
+    margin:  0 auto;
+}
+.authHeader{
+    height: fit-content;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+.authHeader img{
+    width: 100px;
+}
+
+.authHeader p{
+    font-size: 15px;
+    color: var(--sec-color);
+}
+.logIn{
+    height: fit-content;
+    width: 100%;
+}
+.authInputs{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid #0000007c;
+    border-radius: 5px;
+    border-radius: 50px;
+
+}
+.authInputs input{
+    font-family: kanit;
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 5px;
+  color: var(--text-color);
+  border: none;
+  background: none;
+}
+.authInputs input::placeholder{
+    color: #0000007c;
+}
+.authInputs input:focus{
+    outline: none;
+}
+
+.authLogo{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.authLogo h2{
+    font-size: 30px;
+    font-weight: 100;
+    color: var(--sec-color);
+    font-family: kanitbold;
+
+}
+.authHeader p{
+    text-align: center;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+.authBtn{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.authBtnLoder{
+    display: none;
+}
+.authBtn button{
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    background: var(--sec-color);
+    color: aliceblue;
+    font-size: 15px;
+    transition: .3s ease;
+    font-family: kanit;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(-20deg, var(--sec-color),var(--ter-color));
+    
+}
+.authBtn button:hover{
+  transform: scale(.98);
+}
+.authOptions{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+}
+.authOptions p span{
+    color: var(--sec-color);
+    cursor: pointer;
+}
+.authGoogle{
+    height: 100px;
+    width: 100%;
+}
+.gglIntro{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    align-items: center;
+}
+.or{
+    margin: 0 20px;
+}
+.gglIntro span{
+    width: 40%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.315);
+}
+.gglBtn{
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--ter-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50px;
+    color: var(--text-color);
+    justify-content: center;
+
+}
+.gglBtn img{
+    width: 70px;
+    margin: 0 10px;
 }
