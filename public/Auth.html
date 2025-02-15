@@ -29,12 +29,12 @@
                         <div class="authHeader">
                             <div class="authLogo">
                                 <img width="30px" src="./Media/authLogo2.png" alt="">
-                                <h2>Sign In</h2>
+                                <h2 id="authState">Log In</h2>
                             </div>
                        
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                            <p>Hello Pundit, ready to test youself?</p>
                         </div>
-                        <div class="logIn">
+                        <div class="logIn" id="logIn">
                             <div class="authInputs">
                                 <input type="email" name="" id="logEmail" placeholder="Email">
                             </div>
@@ -43,18 +43,46 @@
                             </div>
                             <div class="authBtn">
                                 <div class="authBtnLoder">
-                                    
+
                                     <l-jelly
                                         size="40"
                                         speed="0.9"
                                         color="#1dabec94" 
                                         ></l-jelly>
                                 </div>
-                                <button>Log In</button>
+                                <button onclick="logIn()">Log In</button>
                             </div>
                             <div class="authOptions">
-                                <p>Dont have an account? <span>Sign Up</span></p>
-                                <p> <span>Rest Password</span></p>
+                                <p>Dont have an account? <span onclick="toSignUp()">Sign Up</span></p>
+                                <p> <span onclick="resetPass()">Reset Password</span></p>
+                            </div>
+                        </div>
+                        <div class="signup" id="signUp">
+                            <div class="authInputs">
+                                <input type="text" name="" id="signFullname" placeholder="Full name">
+                            </div>
+                            <div class="authInputs">
+                                <input type="email" name="" id="signEmail" placeholder="Email">
+                            </div>
+                            <div class="authInputs">
+                                <input type="password" name="" id="signPass" placeholder="Password">
+                            </div>
+                            <div class="authInputs">
+                                <input type="password" name="" id="signCPass" placeholder="Confirm Password">
+                            </div>
+                            <div class="authBtn">
+                                <div class="authBtnLoder">
+
+                                    <l-jelly
+                                        size="40"
+                                        speed="0.9"
+                                        color="#1dabec94" 
+                                        ></l-jelly>
+                                </div>
+                                <button>Sign Up</button>
+                            </div>
+                            <div class="authOptions">
+                                <p>Already have an account? <span onclick="toLogIn()">Sign In</span></p>
                             </div>
                         </div>
                         <div class="authGoogle">
@@ -75,6 +103,16 @@
 
 
     </section>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./JS/config.js"></script>
+<script src="./JS/index.js"></script>
+<script src="./JS/auth.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 </body>
 </html>

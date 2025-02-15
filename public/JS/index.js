@@ -69,3 +69,4 @@ function random(min, max) {
   const delta = max - min;
   return (direction = 1) => (min + delta * Math.random()) * direction;
 }
+
