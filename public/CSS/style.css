@@ -30,13 +30,12 @@
   
   /* Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(206, 206, 206); 
     border-radius: 8px;
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--sec-color); 
+    background: #1dabec94; 
     border-radius: 10px;
   }
   
@@ -1141,4 +1140,162 @@ footer{
 .gglBtn img{
     width: 70px;
     margin: 0 10px;
+}
+#Library{
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+}
+.libNav{
+    width: 100vw;
+    height: 10vh;
+    overflow: hidden;
+}
+.libNavPlacer{
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.libLogo img{
+    width: 100px;
+}
+.libLogo{
+    width: fit-content;
+
+}
+.libsearchWrap{
+    width: 40vw;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 50px;
+    border:  1px solid var(--sec-color);
+}
+
+.actlibsearchWrap {
+    width: 90%;
+    height: 100%;
+    overflow: hidden;
+}
+.actlibsearchWrap input{
+    outline: none;
+}
+.actlibsearchWrap input{
+    height: 100%;
+    width: 100%;
+    font-family: kanit;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--text-color);
+    padding-left: 15px;
+}
+
+.actsearchBtn{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    justify-content: center;
+    cursor: pointer;
+    /* background: var(--sec-color); */
+    color: var(--sec-color);
+}
+
+.libAuth{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--sec-color);
+    color: aliceblue;
+    font-size: 20px;
+}
+.libCont{
+    height: 90vh;
+    width: 100vw;
+        overflow-x: scroll;
+    
+}
+.libContPlacer{
+    width: 90%;
+    scrollbar-width: 0 !important;
+    padding: 10px 0;
+    height: 90vh;
+    margin: 0 auto;
+}
+.testLib{
+    height: 120px;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(77, 77, 77, 0.144);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.testLibLeft{
+    height: 90%;
+    margin-left: 20px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+.testLibIcon{
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 10px;
+    margin-right: 20px;
+    height: 90px;
+    background: #1daaec27;
+    color: var(--sec-color);
+}
+.testLibInfo{
+    width: fit-content;
+    color: var(--text-color);
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.testLibInfo h3{
+    font-size: 25px;
+    color: var(--text-color);
+}
+.pplDid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+
+}
+.pplDid i{
+    color:var(--sec-color);
+    margin-right: 10px;
+}
+.testLibRight{
+    margin-right:20px ;
+    width: fit-content;
+
+}
+.testLibRight button{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background: var(--text-color);
+    color: aliceblue;
+    font-family: kanit;
+    cursor: pointer;
+    border: none;
 }
