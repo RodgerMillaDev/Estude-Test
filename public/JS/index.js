@@ -70,3 +70,9 @@ function random(min, max) {
   return (direction = 1) => (min + delta * Math.random()) * direction;
 }
 
+function toLibrary(){
+  window.location.href="library.html"
+}
+function toAuth(){
+  window.location.href="auth.html"
+}

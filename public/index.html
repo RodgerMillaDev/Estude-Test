@@ -28,10 +28,10 @@
                 </div>
                 <div class="navLinks">
                     <div><p>Do Your Test</p></div>
-                    <div><p>Try Demo</p></div>
+                    <div onclick="toLibrary()"><p>Library</p></div>
                     <div><p>About</p></div>
                     <div><p>Reviews</p></div>
-                    <div><p>Sign in</p></div>
+                    <div onclick="toAuth()"><p>Sign in</p></div>
                 </div>
             </div>
           </nav>
@@ -350,15 +350,8 @@
 
 
             </div>
-
-
-
-
         </div>
     </div>
-
-
-
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
@@ -367,7 +360,6 @@
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script src="./JS/index.js"></script>
 <script src="./JS/config.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -375,6 +367,5 @@
         AOS.init();
       </script>
 
-    
 </body>
 </html>
