@@ -48,6 +48,7 @@ input:focus{
   }
 body{
     background: var(--pri2-color);
+    background: aliceblue;
     width: 100vw;
     overflow-x: hidden;
     font-family: kanit;
@@ -1571,7 +1572,7 @@ footer{
   
 }
 .testpagePlacer{
-    width: 80%;
+    width: 90%;
     margin:  0 auto;
     height: 100%;
     
@@ -1731,4 +1732,8 @@ footer{
 }
 .deQ4{
     top:240vh;
+}
+.quizInfo{
+    transform: scale(.0001);
+    position: absolute;
 }

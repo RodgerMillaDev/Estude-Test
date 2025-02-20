@@ -105,3 +105,25 @@ function toSignUp(){
             Swal.fire("Hhmmm, seems like something is missing")
         }
     }
+
+ async   function resetPass(){
+            const { value: email } = await Swal.fire({
+              input: "email",
+              inputLabel: "Reset Your Password",
+              inputPlaceholder: "Enter email"
+            });
+            if (email) {
+              firebase.auth().sendPasswordResetEmail(email)
+            .then(() => {
+              // Password reset email sent!
+              // ..
+              Swal.fire('Password reset link sent. Check your email.');
+              }) .catch((error) => {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              Swal.fire('Please try again');
+              // ..
+            });
+            }
+          }
+    
