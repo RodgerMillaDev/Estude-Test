@@ -127,3 +127,50 @@ function toSignUp(){
             }
           }
     
+
+          
+          const db=firebase.firestore()
+
+
+          function contWithGoogle() {
+              var provider = new firebase.auth.GoogleAuthProvider(); 
+            
+              firebase.auth()
+                .signInWithPopup(provider)
+                .then((result) => {
+                  /** @type {firebase.auth.OAuthCredential} */
+                  var user = result.user;
+                  var photoURL=user.photoURL
+                  var displayName=user.displayName
+                  var email=user.email
+                  var uid=user.uid
+                  db.collection("Users").doc(uid).get().then((doc)=>{
+                    if(doc.exists){
+                      window.location.href="index.html"
+          
+                    }else{
+          
+                      db.collection("Users").doc(user.uid).set({
+                        name:displayName,
+                        em:email,
+                        uid:user.uid
+          
+                    }).then(()=>{
+                        window.location.href="UserProfile.html"
+                    })
+                    }
+          
+                  })
+          
+            
+                
+                })
+                .catch((error) => {
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  Swal.fire(errorMessage)
+                  var email = error.email; // The email of the user's account used.
+                  var credential = error.credential; // The firebase.auth.AuthCredential type that was used.
+                    console.error("Error during sign-in:", errorCode, errorMessage);
+                });
+            }

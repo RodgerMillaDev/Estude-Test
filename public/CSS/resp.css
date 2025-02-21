@@ -1,0 +1,36 @@
+@media only screen and (max-width: 768px) {
+    p{
+        font-size: 14px;
+    }
+
+
+.authLeft{
+    display: none;
+}.authRight{
+    width: 100%;
+}
+
+.authHeader p{
+    font-size: 15px;
+}
+.authRightPlacer{
+    width: 90%;
+}
+.authInputs input{
+    font-family: kanit;
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 5px;
+  color: var(--text-color);
+  border: none;
+  font-size: 15px;
+  background: none;
+}
+.authInputs input::placeholder{
+    color: #000000b0;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+}
