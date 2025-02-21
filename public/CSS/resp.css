@@ -3,7 +3,7 @@
         font-size: 14px;
     }
 
-
+n
 .authLeft{
     display: none;
 }.authRight{
@@ -31,6 +31,74 @@
     color: #000000b0;
     color: var(--text-color);
     font-size: 15px;
+}
+.fonNavIcon{
+    display: flex;
+    margin-left: 0;
+}
+.navLinks{
+    display: none ;
+
+
+}
+.logo{
+    margin-right: 0;
+}
+.navPlacer{
+    width: 95%;
+    justify-content: space-between;
+
+}
+.fonActNav{
+    display: flex;
+
+
+}
+.hero{
+    width: 95vw;
+    height: auto;
+    margin: 0 auto 0 auto;
+    padding: 10vh 0 0;
+}
+.topHero{
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.topHero h1{
+    font-size: 32px;
+    font-family: kanitBold;
+    color: var(--text-color);
+    text-align: center;
+    
+}
+.topHero p{
+    font-size: 17px;
+    width: 80%;
+    margin: 40px 0;
+    text-align: center;
+    
+ }
+ .bt1,.bt2{
+    width: 120px;
+ }
+ .heroImageWRAP{
+    width: 60vw;
+    margin: 0 auto;
+    height: 70vh;
+    position: relative;
+    border-radius: 20px;
+}
+.bottomHero{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 90vh;
+    padding-bottom: 10vh;
 }
 
 }

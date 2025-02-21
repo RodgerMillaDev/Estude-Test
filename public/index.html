@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/resp.css">
+    <script src="https://kit.fontawesome.com/df64ffd27a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=".//Media/icofont/icofont.min.css">
     <link rel="stylesheet" href=".//Media/icofont/icofont.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" integrity="sha512-jEnuDt6jfecCjthQAJ+ed0MTVA++5ZKmlUcmDGBv2vUI/REn6FuIdixLNnQT+vKusE2hhTk2is3cFvv5wA+Sgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="shortcut icon" href="./Media/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./Media/favLightLogo.png" type="image/x-icon">
     <title>Estude Test</title>
 </head>
 <body>
@@ -17,6 +19,19 @@
   <div id="preloader">
     <div id="actPreLoader">
         
+    </div>
+
+  </div>
+  <div class="fonActNav" id="fonActNav">
+    <div class="fonActNavPlacer">
+        <div> <p>Do Your Test</p>  </div>
+        <div> <p>Library</p> </div>
+        <div> <p>About Us</p></div>
+        <div> <p>Reviews</p></div>
+        <div> <p>Sign In</p></div>
+        <div class="fonNavCancel" onclick="cancelFonNav()">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
     </div>
 
   </div>
@@ -31,7 +46,10 @@
                     <div onclick="toLibrary()"><p>Library</p></div>
                     <div><p>About</p></div>
                     <div><p>Reviews</p></div>
-                    <div onclick="toAuth()"><p>Sign in</p></div>
+                    <div onclick="toAuth()" class="navAuth"><p>Sign in</p></div>
+                </div>
+                <div class="fonNavIcon" onclick="toFonNav()">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
             </div>
           </nav>
@@ -39,8 +57,9 @@
           <div class="hero">
             <div class="topHero">
                 <!-- <h1>Assessments To Recruit </h1> <h1> Top<span> Talent</span></h1> -->
-                <h1>ASSEMENTS TO RECRUIT </h1> <h1> TOP<span> TALENT</span></h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <h1>ASSEMENTS TO RECRUIT </h1> 
+                <h1> TOP<span> TALENT</span></h1>
+                <p>Matching quality labour with Evolving Industry Needs</p>
                 <div class="heroBtns">
                     <button class="bt1">Try Demo</button>
                     <button class="bt2">Do a Test</button>
@@ -169,7 +188,7 @@
 
 
                 <h2>WHAT DO WE <span>STAND FOR?</span></h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, corrupti doloribus?</p>
+                <p>Our platform is designed to help recruiters assess candidates through well-structured screening tests, ensuring they find the most qualified individuals for their teams.</p>
             </div>
             <div class="aboutRight">
                 <div class="aboutRightPlacer">
@@ -178,17 +197,16 @@
                             <i class="icofont-tree-alt"></i>
                         </div>
                         <h3>Sharpen Skills</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
+                        <p>Stand out in today’s competitive job market with Estudetest. Our industry-specific assessments help you refine your skills, identify strengths, and showcase your expertise to potential employers. </p> 
                     </div>
                     <div class="aboutCard" data-aos="zoom-out">
                         <div class="aboutCardIcon">
                             <i class="icofont-duotone icofont-components"></i>
                         </div>
                         <h3>Test Your Ability</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
+                        <p>Ready to prove your expertise? Estudetest offers industry-focused assessments designed to evaluate your skills and help you stand out.</p>
 
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
+                        <p>Showcase your strengths, and increase your chances of landing the perfect job.</p>
                     </div>
                     <div class="aboutCard" data-aos="zoom-out">
                         <div class="aboutCardIcon">
@@ -196,18 +214,17 @@
                         </div>
 
                         <h3>Get Results</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
-
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
+                        <p>Get instant insights into your performance and take the next step in your career with confidence. </p>
+                        <p>Our fast, accurate, and reliable assessments provide the clarity you need to succeed, helping you identify strengths and areas for improvement effortlessly.</p>
                     </div>
                     <div class="aboutCard" data-aos="zoom-out">
                         <div class="aboutCardIcon">
                             <i class="icofont-chair"></i>
                         </div>
                         <h3>Become Job Ready</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
+                        <p>Stay ahead in today’s competitive job market with Estudetest. Our tailored assessments ensure you have the skills employers are looking for, helping you match industry demands effortlessly. </p>
 
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit quis iste aspernatur quae debitis totam.</p>
+                        <p>Prove your expertise, meet hiring standards, and secure the opportunities you deserve.</p>
                     </div>
                 </div>
             </div>
@@ -221,8 +238,8 @@
 <section id="Grid">
     <div class="gridplacer">
         <div class="gridIntro">
-            <h2>WHY YOU <span>NEED IT</span></h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, quod.</p>
+            <h2>WHY <span>CHOOSE US</span></h2>
+            <p>Accurate assessments, instant results, and industry-focused evaluations. Estudetest helps you hire smarter and get hired faster!</p>
 
         </div>
         <div class="gridWrap">

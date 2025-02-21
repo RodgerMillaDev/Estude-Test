@@ -94,3 +94,11 @@ function tonxtQuiz(){
 
 
 }
+
+function toFonNav(){
+  document.getElementById("fonActNav").style.left="0"
+}
+function cancelFonNav(){
+  document.getElementById("fonActNav").style.left="-102%"
+
+}
