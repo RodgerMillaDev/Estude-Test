@@ -843,6 +843,7 @@ footer{
     cursor: pointer;
     background: #4BBEFF;
     display: flex;
+    border: none;
     justify-content: center;
     align-items: center;
     color: var(--text-color);
