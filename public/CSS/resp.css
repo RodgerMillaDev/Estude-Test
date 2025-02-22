@@ -61,7 +61,7 @@ n
     padding: 10vh 0 0;
 }
 .topHero{
-    height: 40vh;
+    height: 50vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -79,13 +79,16 @@ n
 .topHero p{
     font-size: 15px;
     width: 80%;
-    margin: 20px 0;
+    margin: 30px 0;
     text-align: center;
     
  }
  .bt1,.bt2{
     width: 120px;
     font-size: 15px;
+ }
+ .bt1:hover,.bt2:hover{
+    width: 120px;
  }
  .heroImageWRAP{
     width: 60vw;
@@ -99,7 +102,7 @@ n
     justify-content: end;
     align-items: end;
     height: 90vh;
-    padding-bottom: 10vh;
+    padding-bottom: 30px;
 }
 .heroImageWRAP{
     width: 80vw;
@@ -163,7 +166,7 @@ n
     font-family: kanitBold;
     height: 40px;
     display: flex;
-    font-size: 30px;
+    font-size: 17px;
 
 }
 .resultDiv{
@@ -173,7 +176,7 @@ n
     color: aliceblue;
 }
 .resultDiv p{
-    font-size: 10px;
+    font-size: 8px;
     margin: 2px 0;
 }
 .bottomHero{
@@ -181,7 +184,6 @@ n
     justify-content: end;
     align-items: end;
     height: 65vh;
-    padding-bottom: 10vh;
 }
 .heroLogo{
     background: rgb(248, 255, 255) ;
@@ -190,8 +192,8 @@ n
     top: 5%;
     box-shadow: 0 0 10px rgba(31, 61, 63, 0.096);
     z-index: 3;
-    width: 120px;
-    height: 60px;
+    width: 100px;
+    height: 50px;
     right: -20px;
     display: flex;
     justify-content: center;
@@ -309,7 +311,7 @@ n
 .aboutLeft{
     width: 100%;
     height:fit-content;
-    padding: 0 0 25px 0;
+    padding: 0 0 30px 0;
 }
 .aboutLeft h2{
     width: 80%;
@@ -386,7 +388,7 @@ n
 #Grid{
     width: 100vw;
     height: 80vh;
-    padding-bottom: 0vh;
+    padding:30px 0;
  }
  .gridplacer{
      margin: 0 auto;
@@ -395,9 +397,9 @@ n
  
  }
  .gridIntro{
-     height: 20vh;
+     height: fit-content;
      display: flex;
-     justify-content: start;
+     justify-content: space-around;
      align-items: center;
      flex-direction: column;
  
@@ -418,6 +420,7 @@ n
  .gridIntro p{
      width: 100%;
      text-align: center;
+     margin: 20px 0;
      font-size: 15px;
  }
  .gridWrap{
@@ -649,29 +652,30 @@ footer{
 
 .footerPlacer{
     position: relative;
-    width: 90%;
+    width: 95%;
     border-radius: 20px;
     background: var(--text-color);
     margin:  0 auto;
-    height:fit-content;
     display: flex;
     justify-content: center;
+    height: fit-content;
     align-items: center;
+    padding: 20px 0;
 }
 .footerminiPlacer{
     width: 90%;
-    height: 80%;
+    height: 70%;
     margin:  0 auto;
 }
 .ftmini4Cont{
     color: #4BBEFF;
 }
 .footerTop{
-    height: fit-content;
+    height: 80%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(1,100%);
-    grid-template-rows: repeat(6,1fr);
+    grid-template-rows: repeat(4,auto);
 
 
 }
@@ -686,45 +690,57 @@ footer{
 .footerBtm p{
     color:#4BBEFF;
     font-weight: 100;
-    font-size: 13px;
+    font-size: 10px;
 }
 .ftmini1{
     grid-area: 1/1/2/2;
     display: flex;
     flex-direction: column;
-    color: aliceblue;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
+   display: flex;
+    width: 100%;
+    padding: 20px 0;
 
-    width: 80%;
-    align-items: start;
-    justify-content: space-around;
+}
+.ftmini1 p{
+    font-size: 13px;
+    margin: 5px 0;
 }
 .ftmini1 p span{
   color: #4BBEFF;
 }
 .ftmini2{
     grid-area: 2/1/3/2;
+    padding: 20px 0;
 }
 
 .ftmini3{
     grid-area: 3/1/4/2;
+    padding: 20px 0;
+
 }
 .ftmini4{
-    grid-area: 5/1/6/2;
+    grid-area: 4/1/5/2;
+    padding: 20px 0;
+
 }
 .ftLogo{
     width: 100%;
-    height: 30%;
+    margin:  0 auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: fit-content;
 }
 
 .ftLogo img{
-    width: 150px;
+    width: 80px;
 }
 .ftmini2H3{
     font-size: 18px;
     height: 15%;
     color: aliceblue;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 .ftmini2Cont{
     color: aliceblue;
@@ -738,7 +754,7 @@ footer{
     cursor: pointer;
     margin-bottom: 10px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
 
 
 }
@@ -746,7 +762,8 @@ footer{
     font-size: 18px;
     height: 15%;
     color: aliceblue;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    
 }
 .ftmini3Cont{
     color: aliceblue;
@@ -760,7 +777,7 @@ footer{
     font-size: 14px;
     transition: .3s ease;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
 }
 .ftmini3Cont p:hover{
   padding-left: 10px;
@@ -774,22 +791,28 @@ footer{
     font-size: 18px;
     height: 15%;
     color: aliceblue;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+
 }
 .ftmini4Cont{
     color: aliceblue;
     height: 20%;
     display: flex;
     flex-direction: column;
-    align-items: space-between;
+    align-items: start;
+    justify-content: space-between;
 }
 .ftmini4Cont p{
-    margin-bottom: 10px;
+    margin-bottom: 3%;
+    height: 100px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
 }
 .ftmini4Search{
-    height: 60%;
+    height: 30%;
+    display: flex;
+    justify-content: start;
+    align-items: end;
 }
 .searchWrapFooter{
     width: 300px;
