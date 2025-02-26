@@ -80,20 +80,6 @@ function toAuth(){
 
 
 
-let quizIndex=0
-function tonxtQuiz(){
-
-  var quizes=document.querySelectorAll(".deQuiz")
-  var quizesWrap=document.querySelector(".deQuizes")
-  if(quizIndex < quizes.length -1){
-    quizIndex++;
-    const offset = -quizIndex* 100 + '%'
-    quizesWrap.style.transform=`translateY(${offset})`
-
-  }
-
-
-}
 
 function toFonNav(){
   document.getElementById("fonActNav").style.left="0"

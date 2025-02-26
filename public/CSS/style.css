@@ -7,12 +7,15 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+html{
+    font-size: 16px;
+}
 
 :root{
     --pri-color:#EAEFF0;
     --pri2-color:#ffffff;
     --sec-color:#11499E;
-    --sec2-color:#3f3f3f;
+    --sec2-color:#2c2c2c;
     --text-color:#001F2B;
     --ter-color:#1dabec94;
     --ter3-color:#4BBEFF;
@@ -179,8 +182,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 .topHero h1{
     font-size: 60px;
@@ -258,9 +260,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 }
 .frontHeroImg{
-    width: 60%;
+    width: 450px;
     z-index: 2;
+    height: 600px;
     left: 50%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
     transform: translate(-50%);
     position: absolute;
     bottom: 0;
@@ -270,8 +275,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     display: flex;
     justify-content: end;
     align-items: end;
-    height: 90vh;
-    padding-bottom: 10vh;
+    height: fit-content;
+    padding:5vh;
 }
 .heroImageWRAP .backImgWrap{
     position: absolute;
@@ -479,8 +484,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     height: 20vh;
 }
 #About{
-    height: 80vh;
-    padding: 10vh 0;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 5vh 0;
     width: 100vw;
 }
 .aboutPlacer{
@@ -566,7 +572,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 #Grid{
    width: 100vw;
    height: 120vh;
-   padding-bottom: 10vh;
+   padding: 5vh;
 }
 .gridplacer{
     margin: 0 auto;
@@ -649,7 +655,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 #cmpnyRank{
     width:100vw ;
-    height: 40vh;
+    height: 50vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -704,18 +710,18 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 .cmpnRank{
     width: 100px;
     height: fit-content;
-    padding: 20px ;
+    padding: 10px 20px;
     border-radius: 10px;
     align-items: center;
     flex-direction: column;
     color: var(--sec-color);
     display: flex;
     background: rgba( 255, 255, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba(31, 109, 135, 0.249);
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba(31, 109, 135, 0.249);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     justify-content: center;
 }
 .circleColor1,
