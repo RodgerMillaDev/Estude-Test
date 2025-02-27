@@ -2,7 +2,8 @@
 const deURL= decodeURIComponent(window.location.search)
 const SU=deURL.split("?")
 const uid= SU[1]
-let userAnswers=[]
+let userAnswers=[];
+let questions;
 
 const animationPath ='./Media/logoLoader.json';
 const animation = lottie.loadAnimation({
@@ -153,7 +154,8 @@ function tonxtQuiz(){
 
 
 function submitTest(){
-  socket.send(JSON.stringify({type:"socketQuizSubmit", socketQuizSubmitTest:userAnswers}))
+    console.log(questions)
+  socket.send(JSON.stringify({type:"socketQuizSubmit", socketQuizSubmitTest:userAnswers,socketQuizData:questions}))
 }
 
 
