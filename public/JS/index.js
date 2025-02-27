@@ -79,7 +79,9 @@ function toAuth(){
 
 
 
-
+function toHome(){
+  window.location.href='index.html'
+}
 
 function toFonNav(){
   document.getElementById("fonActNav").style.left="0"

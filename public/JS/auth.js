@@ -174,3 +174,14 @@ function toSignUp(){
                     console.error("Error during sign-in:", errorCode, errorMessage);
                 });
             }
+
+
+            
+            firebase.auth().onAuthStateChanged((user)=>{
+                if(user){
+                    document.getElementById("navAuth").innerText="Sign Out"
+
+                }else{
+                    document.getElementById("navAuth").innerText="Sign In"
+                }
+            })

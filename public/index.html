@@ -38,15 +38,15 @@
     <section id="Estude">
           <nav>
             <div class="navPlacer">
-                <div class="logo">
-                     <img src="./Media/favLightLogo.png" alt="">
+                <div class="logo" onclick="toHome()">
+                    <img src="./Media/favLightLogo.png" alt="">
                 </div>
                 <div class="navLinks">
                     <div><p>Do Your Test</p></div>
                     <div onclick="toLibrary()"><p>Library</p></div>
                     <div><p>About</p></div>
                     <div><p>Reviews</p></div>
-                    <div onclick="toAuth()" class="navAuth"><p>Sign in</p></div>
+                    <div onclick="toAuth()" class="navAuth"><p id="navAuth">Sign in</p></div>
                 </div>
                 <div class="fonNavIcon" onclick="toFonNav()">
                     <i class="fa-solid fa-bars"></i>
@@ -57,7 +57,7 @@
           <div class="hero">
             <div class="topHero">
                 <!-- <h1>Assessments To Recruit </h1> <h1> Top<span> Talent</span></h1> -->
-                <h1>ASSEMENTS TO RECRUIT </h1> 
+                <h1>ASSESMENTS TO RECRUIT </h1> 
                 <h1> TOP<span> TALENT</span></h1>
                 <p>Matching quality labour with Evolving Industry Needs</p>
                 <div class="heroBtns">
@@ -379,6 +379,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./JS/index.js"></script>
 <script src="./JS/config.js"></script>
+<script src="./JS/auth.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>
         AOS.init();
