@@ -20,7 +20,9 @@ firebase.auth().onAuthStateChanged((user)=>{
 
         var userID=user.uid
         if(userID === uid){
-             socket= new WebSocket('ws://localhost:1759')
+            //  socket= new WebSocket('ws://localhost:1759')
+            socket = new WebSocket('https://estude-new-backend.glitch.me/');
+
             socket.onopen = () =>{
                 socket.send(JSON.stringify({type:'socketAuth', socketID:userID}))
                 console.log('user connected')
@@ -54,7 +56,7 @@ firebase.auth().onAuthStateChanged((user)=>{
 
 async function generateQuiz(socket){
     try {
-        const bUrl = 'http://localhost:1738/generateQuiz'
+        const bUrl = 'https://edutestbackend.onrender.com/generateQuiz'
         const response = await fetch(bUrl,{
             method:'POST',
             headers: {
@@ -65,7 +67,7 @@ async function generateQuiz(socket){
         })
 
         const result = await response.json()
-        var questions =result.data
+        questions =result.data
         localStorage.setItem("quizesData",result.data)
         console.log(result.data)
         socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions}))

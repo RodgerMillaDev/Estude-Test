@@ -1670,6 +1670,13 @@ footer{
     background: linear-gradient(-20deg, var(--sec-color),var(--ter-color));
 
 }
+.swal2-cancel{
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 12px;
+    background: linear-gradient(-20deg, var(--text-color),var(--text-color));
+
+}
 .swal2-title{
     font-size: 18px;
     font-weight: 400;
@@ -1832,7 +1839,7 @@ footer{
 }
 .hseparator{
     width: 100%;
-    height: 2px ;
+    height: 1px ;
     background: gray;
     margin: 10px 0;
     border-radius: 5px;
@@ -2117,4 +2124,188 @@ footer{
 .smpTopicBtm p{
     font-size: .9rem;
 
+}
+#checkStatus{
+    width: 100vw;
+    display: flex;
+    background: rgb(255, 255, 255);
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.checkStatusPlacer{
+    width: 25vw;
+    
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+    display: flex;
+    justify-items: center;
+    overflow: hidden;
+    transition: .5s ease;
+    align-items: center;
+    background-image: linear-gradient(109deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 100%),linear-gradient(125deg, var(--ter-color),var(--sec-color));
+
+}
+.checkStatusWrap{
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+}
+.checkStTop{
+    height: 30%;
+    padding: 20px 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    color: aliceblue;
+    align-items: center;
+}
+.checkStBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 70%;
+    height: fit-content;
+    background: aliceblue;
+    padding: 20px 0;
+    border-radius: 20px 20px 0 0;
+}
+.checkStTop img{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.checkStTop h4{
+    margin: 6px 0;
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+.checkStTop p{
+    font-size: .9rem;
+}
+.ckBtmWrap{
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+}
+.stcashtoPay{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.stcashtoPay h4{
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+.stcashBtmSum{
+    width: 100%;
+    height: fit-content;
+    
+    margin-bottom: 20px;
+    
+}
+.stcashBtmSumP{
+    height:35px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    color: var(--text-color);
+    justify-content: start;
+    align-items: center;
+}
+.statusBox{
+    display: flex;
+    height: 35px;
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    align-items: center;
+}
+.methodBoxDet{
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: rgba(49, 207, 102, 0.205);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 117, 59);
+    font-size: 15px;
+}
+.statusBox p{
+    font-size: .9rem;
+}
+.statusBoxMethod{
+    background: rgba(0, 0, 0, 0.068);
+    height:70px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.statusBoxMethodWrap{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: start;
+    align-items: center;
+}
+.methodBoxImg{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background: aliceblue;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+.methodBoxImg img{
+    width: 32px;
+}
+.methodBoxPayDet{
+    font-size: .8rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.stcashBtns button{
+    height: 50px;
+    width: 100%;
+    border: none;
+    background: var(--text-color);
+    font-family: kanit;
+    cursor: pointer;
+    transition: .4s ease;
+    
+    border-radius: 40px;
+    color: aliceblue;
+}
+.ckBtmWrap button:hover{
+    transform: scale(.95);
+}
+.cllpPay{
+    /* transform: scale(.001); */
+    /* background: yellow; */
+    display: none;
+}
+.stcashBtns{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cnfPayLoader{
+ display: none;
 }

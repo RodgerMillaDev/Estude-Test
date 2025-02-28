@@ -28,7 +28,7 @@
       <section id="Library">
         <nav>
             <div class="navPlacer">
-                <div class="logo">
+                <div class="logo" onclick="toHome()">
                      <img src="./Media/favLightLogo.png" alt="">
                 </div>
                 <div class="navLinks">
@@ -36,7 +36,7 @@
                     <div onclick="toLibrary()"><p>Library</p></div>
                     <div><p>About</p></div>
                     <div><p>Reviews</p></div>
-                    <div onclick="toAuth()" class="navAuth"><p>Sign in</p></div>
+                    <div onclick="toAuth()" class="navAuth"><p id="navAuth">Sign in</p></div>
                 </div>
                 <div class="fonNavIcon" onclick="toFonNav()">
                     <i class="fa-solid fa-bars"></i>
@@ -184,7 +184,7 @@
                     <div class="libRightTop">
                         <img src="./Media/newLightLogo.png" alt="">
                         <div class="libRightTopPlacer">
-                            <h2>Which exam are you testing today?</h2>
+                            <h2>Which test are you taking today?</h2>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima aspernatur quis non. Quisquam, consequuntur accusantium?</p>
                             <div class="libSearchWrap">
 
@@ -230,7 +230,7 @@
                                     </div>
                                     <div class="smpTopicBtm">
                                     <p>Level : <span>Intermideate</span></p>
-                                        <button> Take Test</button>
+                                        <button onclick="toTest()"> Take Test</button>
                                     </div>
                                 </div>
                             </div>
@@ -604,6 +604,7 @@
 <script src="./JS/config.js"></script>
 <script src="./JS/index.js"></script>
 <script src="./JS/library.js"></script>
+<script src="./JS/auth.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>

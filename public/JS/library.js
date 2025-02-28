@@ -10,6 +10,7 @@ function toTest(){
         var uid=user.uid
       
         window.location.href='checkout.html'+"?"+uid
+        
     }else{
         const Toast = Swal.mixin({
             toast: true,
@@ -26,7 +27,6 @@ function toTest(){
             icon: "warning",
             title: "Sign in to proceed"
           });
-        console.log("User is not logged in")
     }
 
    })
