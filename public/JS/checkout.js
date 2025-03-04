@@ -5,13 +5,15 @@ const uid= SU[1]
 if(uid==""){
     window.location.href="index.html"
 }else{
-    
+
 }
 
 async function payNow(){
     try{
+        document.getElementById("checkoutPayNow").style.display="none"
+        document.getElementById("checkoutPayFeeLoader").style.display="block"
 
-    var url ="http://localhost:1738/payTest"
+    var url ="https://edutestbackend.onrender.com/payTest"
     const response = await fetch(url,{
 
         method:"POST",
@@ -32,7 +34,9 @@ async function payNow(){
         window.location.href=authUrl
     }
 }catch(err){
-    console.log(err)
+          document.getElementById("checkoutPayNow").style.display="block"
+          document.getElementById("checkoutPayFeeLoader").style.display="none"
+          console.log(err)
 
 }
 }

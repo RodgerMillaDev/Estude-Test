@@ -29,14 +29,17 @@ function toSignUp(){
                     document.getElementById("authBtnLoderLog").style.display = "none";
                     
                     var errCode = error.code; 
+                    console.log(error)
 
     
-                    if (errCode === "auth/invalid-email" || errCode === "auth/wrong-password") {
+                    if (errCode === "auth/invalid-email" || errCode === "auth/wrong-password" || errCode === "auth/internal-error") {
                         Swal.fire({
                             title: "Invalid email or password",
                             icon: "error",
                             draggable: false
                         });
+                    }else{
+                        console.log(error)
                     }
                 });
         } else {

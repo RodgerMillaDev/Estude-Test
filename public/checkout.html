@@ -86,25 +86,29 @@
                             </div>
                         </div>
                         <div class="payDet">
-                            <p>Card details</p>
+                            <p>Fee Amount (USD)</p>
                             <div class="payDetInput">
                                 <div class="payDetIcon">
                                     <i class="fa-solid fa-credit-card"></i>
                                 </div>
                                  <div class="payDetInputWrap">
-                                    <input class="cardNumberInput" type="number" placeholder="Card number">
-                                    <div class="expCard">
-                                         <input type="number" placeholder="MM / YY">
-                                    </div>
-                                    <div class="cardCvv">
-                                        <input type="number" name="" id="" placeholder="CVC">
-                                    </div>
+                                    <input class="cardNumberInput" type="number" placeholder="$ 20.0" readonly value="20">
+                                   
                                 </div>
                             </div>
                         </div>
                         <div class="tandBtn">
                             <p>* By clicking on "Pay Fee" you are agreeing with Estude Test terms and conditions *</p>
-                            <button onclick="payNow()">Pay Fee</button>
+                            <div class="checkoutPayFeeBtnWrap">
+                                <button onclick="payNow()" id="checkoutPayNow">Pay Fee</button>
+                                <div id="checkoutPayFeeLoader">
+                                    <l-jelly
+                                    size="40"
+                                    speed="0.9"
+                                    color="#1dabec94" 
+                                    ></l-jelly>
+                                </div>
+                            </div>
                         </div>
                     </div>
                    
