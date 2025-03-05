@@ -1,6 +1,15 @@
 const deURL= decodeURIComponent(window.location.search)
 const SU=deURL.split("?")
 const uid= SU[1]
+const urlTopic= SU[2]
+
+if(urlTopic=='' || undefined){
+   window.location.href='library.html'
+}else{
+    document.getElementById("checkoutTopic").innerText=urlTopic;
+    document.getElementById("checkoutTopicMini").innerText=urlTopic;
+
+}
 
 if(uid==""){
     window.location.href="index.html"
@@ -13,7 +22,8 @@ async function payNow(){
         document.getElementById("checkoutPayNow").style.display="none"
         document.getElementById("checkoutPayFeeLoader").style.display="block"
 
-    var url ="https://edutestbackend.onrender.com/payTest"
+    // var url ="https://edutestbackend.onrender.com/payTest"
+    var url ="http://localhost:1738/payTest"
     const response = await fetch(url,{
 
         method:"POST",

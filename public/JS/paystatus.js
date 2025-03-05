@@ -15,7 +15,8 @@ async function checkPayment(){
     if(stBtn=="Confirm Payment"){
         try {
         
-            const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
+            // const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
+            const cfmUrl="http://localhost:1738/trxnStatus"
             const response = await fetch(cfmUrl,{
             method:"POST",
             headers:{
@@ -38,7 +39,7 @@ async function checkPayment(){
                         confirmButtonColor: "#3085d6",
                         cancelButtonColor: "#d33",
                         cancelButtonText: "Check again",
-                        confirmButtonText: "Pay again"
+                        confirmButtonText: "Try again"
                       }).then((result) => {
                         if (result.isConfirmed) {
                           window.location.href="checkout.html"
@@ -49,7 +50,8 @@ async function checkPayment(){
             }else if(result.status==true){
                 if(result.message=="Verification successful"){
                     var paidAmount = result.data.requested_amount;
-                    console.log(paidAmount)
+                    var datePaid = result.data.transaction_date;
+                    console.log(result)
                     Swal.fire({
                         title: "Payment Successful",
                         text: `Your $ ${paidAmount} transaction has been received`,
@@ -58,8 +60,18 @@ async function checkPayment(){
                         confirmButtonColor: "#3085d6",
                         confirmButtonText: "Ok"
                       }).then((result) => {
+
+
+                    document.getElementById("paidDate").innerText=formatDate(paidAmount)
+                    document.getElementById("paymentStatusDate").style.display='flex'
+                    document.getElementById("paymentStatusMethod").style.display='flex'
+                    document.getElementById("paymentStatusSt").style.display='flex'
+                    document.getElementById("cnfPayLoader").style.display="none"
+                    document.getElementById("statusBtn").style.display="block"
+                    document.getElementById("statusBtn").innerText="Proceed"
                         if (result.isConfirmed) {
-                                 window.location.href="test.html"+"?"+userID
+
+                                //  window.location.href="test.html"+"?"+userID
                         }
                       });
                     
@@ -75,3 +87,22 @@ async function checkPayment(){
     }
    
 }
+
+
+function formatDate(isoString) {
+    let date = new Date(isoString);
+
+    let options = {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+    };
+
+    return date.toLocaleString("en-US", options).replace(",", "") + " at " + date.toLocaleString("en-US", { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase();
+}
+
+// Example Usage
+console.log(formattedDate); // Output: "Mar 4, 2025 at 9:24pm"

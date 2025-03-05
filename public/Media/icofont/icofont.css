@@ -33,54 +33,134 @@ url("./fonts/icofont.woff") format("woff");
   -webkit-font-smoothing: antialiased;
 }
 
-.icofont-star-shape:before
+.icofont-angry-monster:before
 {
-  content: "\e820";
+  content: "\e800";
 }
 
-.icofont-duotone.icofont-components:before
+.icofont-bathtub:before
 {
-  content: "\13aef";
+  content: "\e801";
 }
 
-.icofont-duotone.icofont-components:after
+.icofont-bird-wings:before
 {
-  content: "\13aee";
+  content: "\e802";
 }
 
-.icofont-trophy-alt:before
+.icofont-bow:before
 {
-  content: "\edd6";
+  content: "\e803";
 }
 
-.icofont-medal:before
+.icofont-castle:before
 {
-  content: "\eae2";
+  content: "\e804";
 }
 
-.icofont-medal-sport:before
+.icofont-circuit:before
 {
-  content: "\edb4";
+  content: "\e805";
 }
 
-.icofont-duotone.icofont-groups:before
+.icofont-crown-king:before
 {
-  content: "\13b3f";
+  content: "\e806";
 }
 
-.icofont-duotone.icofont-groups:after
+.icofont-crown-queen:before
 {
-  content: "\13b3e";
+  content: "\e807";
 }
 
-.icofont-tree-alt:before
+.icofont-dart:before
 {
-  content: "\e824";
+  content: "\e808";
 }
 
-.icofont-chair:before
+.icofont-disability-race:before
 {
-  content: "\e96a";
+  content: "\e809";
+}
+
+.icofont-diving-goggle:before
+{
+  content: "\e80a";
+}
+
+.icofont-eye-open:before
+{
+  content: "\e80b";
+}
+
+.icofont-flora-flower:before
+{
+  content: "\e80c";
+}
+
+.icofont-flora:before
+{
+  content: "\e80d";
+}
+
+.icofont-gift-box:before
+{
+  content: "\e80e";
+}
+
+.icofont-halloween-pumpkin:before
+{
+  content: "\e80f";
+}
+
+.icofont-hand-power:before
+{
+  content: "\e810";
+}
+
+.icofont-hand-thunder:before
+{
+  content: "\e811";
+}
+
+.icofont-king-monster:before
+{
+  content: "\e812";
+}
+
+.icofont-love:before
+{
+  content: "\e813";
+}
+
+.icofont-magician-hat:before
+{
+  content: "\e814";
+}
+
+.icofont-native-american:before
+{
+  content: "\e815";
+}
+
+.icofont-owl-look:before
+{
+  content: "\e816";
+}
+
+.icofont-phoenix:before
+{
+  content: "\e817";
+}
+
+.icofont-robot-face:before
+{
+  content: "\e818";
+}
+
+.icofont-sand-clock:before
+{
+  content: "\e819";
 }
 
 .icofont-shield-alt:before
@@ -88,24 +168,149 @@ url("./fonts/icofont.woff") format("woff");
   content: "\e81a";
 }
 
-.icofont-money-bag:before
+.icofont-ship-wheel:before
 {
-  content: "\e972";
+  content: "\e81b";
 }
 
-.icofont-globe-alt:before
+.icofont-skull-danger:before
 {
-  content: "\eada";
+  content: "\e81c";
 }
 
-.icofont-earth:before
+.icofont-skull-face:before
 {
-  content: "\ef0e";
+  content: "\e81d";
 }
 
-.icofont-paper-plane:before
+.icofont-snowmobile:before
 {
-  content: "\efb4";
+  content: "\e81e";
+}
+
+.icofont-space-shuttle:before
+{
+  content: "\e81f";
+}
+
+.icofont-star-shape:before
+{
+  content: "\e820";
+}
+
+.icofont-swirl:before
+{
+  content: "\e821";
+}
+
+.icofont-tattoo-wing:before
+{
+  content: "\e822";
+}
+
+.icofont-throne:before
+{
+  content: "\e823";
+}
+
+.icofont-tree-alt:before
+{
+  content: "\e824";
+}
+
+.icofont-triangle:before
+{
+  content: "\e825";
+}
+
+.icofont-unity-hand:before
+{
+  content: "\e826";
+}
+
+.icofont-weed:before
+{
+  content: "\e827";
+}
+
+.icofont-woman-bird:before
+{
+  content: "\e828";
+}
+
+.icofont-chair:before
+{
+  content: "\e96a";
+}
+
+.icofont-bill-alt:before
+{
+  content: "\e964";
+}
+
+.icofont-certificate-alt-1:before
+{
+  content: "\ead4";
+}
+
+.icofont-certificate-alt-2:before
+{
+  content: "\ead5";
+}
+
+.icofont-certificate:before
+{
+  content: "\ead6";
+}
+
+.icofont-education:before
+{
+  content: "\ead7";
+}
+
+.icofont-paper:before
+{
+  content: "\eae5";
+}
+
+.icofont-search-folder:before
+{
+  content: "\ed14";
+}
+
+.icofont-search-document:before
+{
+  content: "\ed13";
+}
+
+.icofont-dropbox:before
+{
+  content: "\ed30";
+}
+
+.icofont-box:before
+{
+  content: "\eec1";
+}
+
+.icofont-license:before
+{
+  content: "\ef66";
+}
+
+.icofont-world:before
+{
+  content: "\f02c";
+}
+
+.icofont-layers:before
+{
+  content: "\ef5c";
+}
+
+.icofont-muscle:before
+{
+  content: "\eb3a";
 }
 
 [class^="icofont-"].icofont-duotone,

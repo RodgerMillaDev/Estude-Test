@@ -24,10 +24,10 @@
   </div>
   <div class="fonActNav" id="fonActNav">
     <div class="fonActNavPlacer">
-        <div> <p>Do Your Test</p>  </div>
+        <div onclick="toAffiliation()"> <p>Do Your Test</p>  </div>
         <div onclick="toLibrary()"> <p>Library</p> </div>
-        <div> <p>About Us</p></div>
-        <div> <p>Reviews</p></div>
+        <div onclick="toReviews()"> <p>About Us</p></div>
+        <div onclick="toReviews()"> <p>Reviews</p></div>
         <div onclick="toAuth()"> <p>Sign In</p></div>
         <div class="fonNavCancel" onclick="cancelFonNav()">
             <i class="fa-solid fa-xmark"></i>
@@ -42,10 +42,10 @@
                     <img src="./Media/favLightLogo.png" alt="">
                 </div>
                 <div class="navLinks">
-                    <div><p>Do Your Test</p></div>
+                    <div onclick="toAffiliation()"><p>Do Your Test</p></div>
                     <div onclick="toLibrary()"><p>Library</p></div>
-                    <div><p>About</p></div>
-                    <div><p>Reviews</p></div>
+                    <div onclick="toAbout()"><p>About</p></div>
+                    <div onclick="toReviews()"><p>Reviews</p></div>
                     <div onclick="toAuth()" class="navAuth"><p id="navAuth">Sign in</p></div>
                 </div>
                 <div class="fonNavIcon" onclick="toFonNav()">
@@ -60,8 +60,8 @@
                 <h1> TOP<span> TALENT</span></h1>
                 <p>Matching quality labour with Evolving Industry Needs</p>
                 <div class="heroBtns">
-                    <button class="bt1">Try Demo</button>
-                    <button class="bt2">Do a Test</button>
+                    <button class="bt1" onclick="toAffiliation()">Affiliated Exam</button>
+                    <button class="bt2" onclick="toLibrary()">Do a Test</button>
                 </div>
             </div>
             <div class="bottomHero">
@@ -200,7 +200,7 @@
                     </div>
                     <div class="aboutCard" data-aos="zoom-out">
                         <div class="aboutCardIcon">
-                            <i class="icofont-duotone icofont-components"></i>
+                            <i class="icofont-muscle"></i>
                         </div>
                         <h3>Test Your Ability</h3>
                         <p>Ready to prove your expertise? Estudetest offers industry-focused assessments designed to evaluate your skills and help you stand out.</p>
@@ -243,14 +243,14 @@
         </div>
         <div class="gridWrap">
             <div class="grid grid1">
-                <img src="./Media/pexels-felicity-tai-7964537.jpg" alt="">
+                <img src="./Media/Screenshot 2025-03-05 161344.png" alt="">
             </div>
             
             <div class="grid grid3">
-                <img src="./Media/pexels-sora-shimazaki-5668863.jpg" alt="">
+                <img src="./Media/Screenshot 2025-03-05 161550.png" alt="">
             </div>
             <div class="grid grid4">
-                <img src="./Media/pexels-cottonbro-5989937.jpg" alt="">
+                <img src="./Media/Screenshot 2025-03-05 161410.png" alt="">
 
             </div>
         </div>
@@ -353,8 +353,7 @@
                     <div class="searchWrapFooter">
                          <input type="text" placeholder="Your Email">
                          <div class="searchWrapFooterBtn">
-                            <i class="icofont-paper-plane"></i>
-                        </div>
+                            <i class="fa-solid fa-paper-plane"></i>                        </div>
                     </div>
                 </div>
 

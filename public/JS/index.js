@@ -90,3 +90,14 @@ function cancelFonNav(){
   document.getElementById("fonActNav").style.left="-102%"
 
 }
+
+function toAffiliation(){
+  window.location.href='affiliatedexam.html'
+
+}
+function toAbout(){
+  window.location.href='index.html#About'
+}
+function toReviews(){
+  window.location.href='index.html#Reviews'
+}
