@@ -20,8 +20,8 @@ firebase.auth().onAuthStateChanged((user)=>{
 
         var userID=user.uid
         if(userID === uid){
-             socket= new WebSocket('ws://localhost:1738')
-            // socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
+            //  socket= new WebSocket('ws://localhost:1738')
+            socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
 
             socket.onopen = () =>{
                 socket.send(JSON.stringify({type:'socketAuth', socketID:userID}))
