@@ -83,7 +83,7 @@ async function checkPayment(){
                             document.getElementById("statusBtn").innerText="Proceed To Test"
                                 if (result.isConfirmed && signature) {
         
-                                         window.location.href="test.html"+"?"+userID+"?"+isPaid+"?"+signature
+                                         window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature
                                 }
                         })
 
@@ -103,8 +103,7 @@ async function checkPayment(){
             Swal.fire("An error occured.Try Again Later")
         }
     }else if(stBtn==="Proceed To Test" && isPaid==true){
-           window.location.href="test.html"+"?"+userID+"?"+signature;
-    }
+        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature;    }
    
 }
 
