@@ -3,11 +3,16 @@ const mainURL=decodeURIComponent(window.location.search)
 const urlArray = mainURL.split("?")
 const urlSp=urlArray[1].split("&")
 const userID =urlSp[0]
+var isPaid=false
+var signature;
 
 console.log(userID)
 
 
 async function checkPayment(){
+
+
+
     var stBtn=document.getElementById("statusBtn").innerText;
     var refCode=localStorage.getItem("refCodePay")
     document.getElementById("statusBtn").style.display="none"
@@ -51,6 +56,9 @@ async function checkPayment(){
                 if(result.message=="Verification successful"){
                     var paidAmount = result.data.requested_amount;
                     var datePaid = result.data.transaction_date;
+                    signature = result.data.authorization.signature;
+                    console.log(signature)
+                    isPaid=true;
                     console.log(result)
                     Swal.fire({
                         title: "Payment Successful",
@@ -60,19 +68,26 @@ async function checkPayment(){
                         confirmButtonColor: "#3085d6",
                         confirmButtonText: "Ok"
                       }).then((result) => {
+                        firebase.firestore().collection("Users").doc(userID).update({
+                            signature:signature
+                        }).then(()=>{
+
+                            document.getElementById("paidDate").innerText=formatDate(paidAmount)
+                            document.getElementById("payStatusH4").innerText="Payment Received"
+                            document.getElementById("payStatusP").innerText="Proceed to your test"
+                            document.getElementById("paymentStatusDate").style.display='flex'
+                            document.getElementById("paymentStatusMethod").style.display='flex'
+                            document.getElementById("paymentStatusSt").style.display='flex'
+                            document.getElementById("cnfPayLoader").style.display="none"
+                            document.getElementById("statusBtn").style.display="block"
+                            document.getElementById("statusBtn").innerText="Proceed To Test"
+                                if (result.isConfirmed && signature) {
+        
+                                         window.location.href="test.html"+"?"+userID+"?"+isPaid+"?"+signature
+                                }
+                        })
 
 
-                    document.getElementById("paidDate").innerText=formatDate(paidAmount)
-                    document.getElementById("paymentStatusDate").style.display='flex'
-                    document.getElementById("paymentStatusMethod").style.display='flex'
-                    document.getElementById("paymentStatusSt").style.display='flex'
-                    document.getElementById("cnfPayLoader").style.display="none"
-                    document.getElementById("statusBtn").style.display="block"
-                    document.getElementById("statusBtn").innerText="Proceed"
-                        if (result.isConfirmed) {
-
-                                //  window.location.href="test.html"+"?"+userID
-                        }
                       });
                     
                 }
@@ -81,9 +96,14 @@ async function checkPayment(){
         
         } catch (error) {
             console.log(error)
+            document.getElementById("statusBtn").innerText="Confirm Payment"
+            document.getElementById("statusBtn").style.display="block"
+            document.getElementById("cnfPayLoader").style.display="none"
+
+            Swal.fire("An error occured.Try Again Later")
         }
-    }else if(stBtn==="Proceed To Test"){
-           window.location.href="test.html"+"?"+userID
+    }else if(stBtn==="Proceed To Test" && isPaid==true){
+           window.location.href="test.html"+"?"+userID+"?"+signature;
     }
    
 }

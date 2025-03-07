@@ -2,6 +2,16 @@ const deURL= decodeURIComponent(window.location.search)
 const SU=deURL.split("?")
 const uid= SU[1]
 const urlTopic= SU[2]
+var offUID=localStorage.getItem("EstudeUserID")
+var offEmail=localStorage.getItem("EstudeUserEmail")
+document.getElementById("payEmailAdress").value=offEmail;
+
+if(uid !=offUID){
+    Swal.fire("Error! Incorrect credentials").then(()=>{
+        window.location.href='library.html'
+
+    })
+}
 
 if(urlTopic=='' || undefined){
    window.location.href='library.html'
@@ -19,6 +29,7 @@ if(uid==""){
 
 async function payNow(){
     try{
+        var payEmail = document.getElementById("payEmailAdress").value;
         document.getElementById("checkoutPayNow").style.display="none"
         document.getElementById("checkoutPayFeeLoader").style.display="block"
 
@@ -30,7 +41,7 @@ async function payNow(){
         headers:{
             "Content-type":"application/json",
         },
-        body:JSON.stringify({uid})
+        body:JSON.stringify({uid,payEmail})
 
 
     })

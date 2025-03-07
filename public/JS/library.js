@@ -105,7 +105,15 @@ function toTest(e){
   firebase.auth().onAuthStateChanged((user)=>{
    if(user){
        var uid=user.uid
-       window.location.href='checkout.html'+"?"+uid+"?"+e
+       firebase.firestore().collection("Users").doc(uid).get().then((userCred)=>{
+            var userEmail = userCred.data().em;
+            console.log(userEmail)
+            localStorage.setItem("EstudeUserID",uid)
+            localStorage.setItem("EstudeUserEmail",userEmail)
+            window.location.href='checkout.html'+"?"+uid+"?"+e
+       })
+    
+
       
    }else{
        const Toast = Swal.mixin({
