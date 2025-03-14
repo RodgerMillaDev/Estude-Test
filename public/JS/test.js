@@ -5,14 +5,14 @@ const uid= SU[1]
 let userAnswers=[];
 let questions;
 
-const animationPath ='./Media/logoLoader.json';
-const animation = lottie.loadAnimation({
-container: document.getElementById('actPreLoader'), 
-renderer: 'svg',
-loop: true,
-autoplay: true,
-path: animationPath 
-});
+// const animationPath ='./Media/logoLoader.json';
+// const animation = lottie.loadAnimation({
+// container: document.getElementById('actPreLoader'), 
+// renderer: 'svg',
+// loop: true,
+// autoplay: true,
+// path: animationPath 
+// });
  let socket;
 
 firebase.auth().onAuthStateChanged((user)=>{
@@ -20,8 +20,8 @@ firebase.auth().onAuthStateChanged((user)=>{
 
         var userID=user.uid
         if(userID === uid){
-            //  socket= new WebSocket('ws://localhost:1738')
-            socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
+             socket= new WebSocket('ws://localhost:1738')
+            // socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
 
             socket.onopen = () =>{
                 socket.send(JSON.stringify({type:'socketAuth', socketID:userID}))

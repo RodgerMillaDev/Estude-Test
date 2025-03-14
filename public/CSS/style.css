@@ -62,6 +62,36 @@ input{
   ::-webkit-scrollbar-thumb:hover {
     background: var(--text-color); 
   }
+
+
+  .swal2-confirm{
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 12px;
+    font-family: Kanit;
+
+    background: linear-gradient(-20deg, var(--sec-color),var(--ter-color));
+
+}
+.swal2-confirm:hover{
+    background: linear-gradient(-20deg, var(--sec-color),var(--ter-color));
+
+}
+.swal2-cancel{
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-family: Kanit;
+
+    font-size: 12px;
+    background: linear-gradient(-20deg, var(--text-color),var(--text-color));
+
+}
+.swal2-title{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
 body{
     background: var(--pri2-color);
     background: aliceblue;
@@ -357,7 +387,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     z-index: 3;
     background: rgb(248, 255, 255) ;
     position: absolute;
-    
     border-radius: 10px;
     top: 15%;
     box-shadow: 0 0 10px rgba(31, 61, 63, 0.096);
@@ -828,7 +857,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 footer{
     width: 100vw;
-    height: 80vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -843,18 +872,18 @@ footer{
 
 .footerPlacer{
     position: relative;
-    width: 80%;
+    width: 90%;
     border-radius: 20px;
     background-image: linear-gradient(109deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 100%),linear-gradient(125deg, var(--text-color),var(--text-color));
     margin:  0 auto;
-    height:70vh;
+    height:60vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .footerminiPlacer{
     width: 90%;
-    height: 80%;
+    height: 90%;
     margin:  0 auto;
 }
 .ftmini4Cont{
@@ -873,7 +902,7 @@ footer{
     height: 20%;
     width: 100%;
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: center;
 
 }
@@ -886,13 +915,22 @@ footer{
     grid-area: 1/1/2/4;
     display: flex;
     flex-direction: column;
-    color: aliceblue;
     color: rgba(255, 255, 255, 0.5);
 
     font-size: 14px;
     width: 80%;
     align-items: start;
     justify-content: space-between;
+}
+.ftmini1Cont{
+    height: 60%;
+
+}
+.ftmini1Cont p{
+  margin-bottom: 15px;
+}
+.ftmini1Loc{
+    height: 30%;
 }
 .ftmini1 p span{
   color: #4BBEFF;
@@ -913,17 +951,20 @@ footer{
 }
 
 .ftLogo img{
-    width: 150px;
+    width: 120px;
 }
 .ftmini2H3{
     font-size: 20px;
     height: 20%;
     color: aliceblue;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 .ftmini2Cont{
     color: aliceblue;
-    height: 80%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     align-items: space-between;
@@ -942,6 +983,9 @@ footer{
     height: 20%;
     color: aliceblue;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 .ftmini3Cont{
     color: aliceblue;
@@ -969,6 +1013,9 @@ footer{
     font-size: 20px;
     height: 20%;
     color: aliceblue;
+    display: flex;
+    justify-content: start;
+    align-items: center;
     margin-bottom: 30px;
 }
 .ftmini4Cont{
@@ -981,6 +1028,7 @@ footer{
 .ftmini4Cont p{
     margin-bottom: 10px;
     font-size: 14px;
+
     color: rgba(255, 255, 255, 0.5);
 }
 .ftmini4Search{
@@ -1150,7 +1198,7 @@ footer{
 }
 .authBtn button{
     width: 100%;
-    height: 50px;
+    height: 40px;
     border-radius: 50px;
     background: var(--sec-color);
     color: aliceblue;
@@ -1196,7 +1244,7 @@ footer{
     background: rgba(0, 0, 0, 0.315);
 }
 .gglBtn{
-    height: 50px;
+    height: 40px;
     width: 100%;
     overflow: hidden;
     border: 1px solid var(--ter-color);
@@ -1641,7 +1689,6 @@ footer{
     margin-right: 10px;
 }
 
-
 .sltChoiceUser{
     background: var(--ter-color);
 
@@ -1686,24 +1733,6 @@ footer{
 .quizInfo{
     transform: scale(.0001);
     position: absolute;
-}
-.swal2-confirm{
-    border-radius: 20px;
-    padding: 10px 30px;
-    font-size: 12px;
-    background: linear-gradient(-20deg, var(--sec-color),var(--ter-color));
-
-}
-.swal2-cancel{
-    border-radius: 20px;
-    padding: 10px 30px;
-    font-size: 12px;
-    background: linear-gradient(-20deg, var(--text-color),var(--text-color));
-
-}
-.swal2-title{
-    font-size: 18px;
-    font-weight: 400;
 }
 
 
@@ -2623,4 +2652,129 @@ footer{
 }
 .noTopicLib p{
     font-size: .8rem;
+}
+.Step{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding: 10vh 0;
+    background: var(--text-color);
+}
+.stepPlacer{
+  width: 80%;
+  margin: 0 auto;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stepTop{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    height: 50%;
+    margin-bottom: 10px;
+
+
+}
+.stepBtm{
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+
+}
+.stepTop p{
+    margin-bottom: 20px ;
+    color: var(--ter3-color);
+}
+.stepTop h2{
+    color: rgb(215, 224, 232);
+    font-size: 40px;
+
+    font-family: kanitBold;
+}
+.stepCards{
+    display: flex;
+    flex-direction: row;
+    /* grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(1,1fr); */
+    height: 100%;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.stepCard{
+    border-radius: 10px;
+    display: flex;
+    width: 32%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgba(100, 100, 100, 0.374);
+    background: #022c3c;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepCardWrap{
+    width: 85%;
+    height: 80%;
+    position: relative;
+}
+.stepCardNumber{
+    height: 22%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    top: 5%;
+    position: absolute;
+
+
+}
+.stepCardNumber h2{
+    color: rgb(162, 167, 173);
+}
+.stepCardNumber h2{
+  font-family: kanit;
+  font-size: 70px;
+}
+.stepCardInfo{
+    height: 75%;
+    width: 100%;
+    background:#022c3c;
+    box-shadow: -10px 0 40px 20px #022c3c;
+    position: absolute;
+    top: 25%;
+    
+}
+.stepCardInfo{
+    justify-content: center;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+
+}
+.stepCardInfo h3{
+  font-size: 20px;
+  color: rgba(240, 248, 255, 0.783);
+  margin: 10px 0;
+}
+.stepCardInfo p{
+  font-size: 13px;
+  color: rgba(240, 248, 255, 0.5);
+
+}
+
+#Mission{
+    width: 100vw;
+    height: fit-content;
+    padding: 10vh 0;
 }

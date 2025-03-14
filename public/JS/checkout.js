@@ -28,37 +28,43 @@ if(uid==""){
 }
 
 async function payNow(){
-    try{
-        var payEmail = document.getElementById("payEmailAdress").value;
-        document.getElementById("checkoutPayNow").style.display="none"
-        document.getElementById("checkoutPayFeeLoader").style.display="block"
-
-    var url ="https://edutestbackend.onrender.com/payTest"
-    // var url ="http://localhost:1738/payTest"
-    const response = await fetch(url,{
-
-        method:"POST",
-        headers:{
-            "Content-type":"application/json",
-        },
-        body:JSON.stringify({uid,payEmail})
+    var payEmail = document.getElementById("payEmailAdress").value;
 
 
-    })
+        if(payEmail!=''){
+            try{
+                document.getElementById("checkoutPayNow").style.display="none"
+                document.getElementById("checkoutPayFeeLoader").style.display="block"
+                // var url ="https://edutestbackend.onrender.com/payTest"
+                var url ="http://localhost:1738/payTest"
+                const response = await fetch(url,{
 
-    const result= await response.json()
-    if(result.status==true){
-        var accessCode=result.data.accessCode;
-        var refCode=result.data.reference;
-        var authUrl=result.data.authorization_url
-        localStorage.setItem('refCodePay',refCode)
-        window.location.href=authUrl
-    }
-}catch(err){
-          document.getElementById("checkoutPayNow").style.display="block"
-          document.getElementById("checkoutPayFeeLoader").style.display="none"
-          console.log(err)
+                    method:"POST",
+                    headers:{
+                        "Content-type":"application/json",
+                    },
+                    body:JSON.stringify({uid,payEmail})
 
-}
+
+                })
+
+                    const result= await response.json()
+                    if(result.status==true){
+                        var accessCode=result.data.accessCode;
+                        var refCode=result.data.reference;
+                        var authUrl=result.data.authorization_url
+                        localStorage.setItem('refCodePay',refCode)
+                        window.location.href=authUrl
+                    }
+                            }catch(err){
+                                    document.getElementById("checkoutPayNow").style.display="block"
+                                    document.getElementById("checkoutPayFeeLoader").style.display="none"
+                                    console.log(err)
+
+                            }
+            }else{
+                Swal.fire("Input your payment email")
+            }
+ 
 }
 

@@ -188,7 +188,7 @@ function toSignUp(){
                         uid:user.uid
           
                     }).then(()=>{
-                        window.location.href="UserProfile.html"
+                        window.location.href="index.html"
                     })
                     }
           

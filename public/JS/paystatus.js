@@ -20,8 +20,8 @@ async function checkPayment(){
     if(stBtn=="Confirm Payment"){
         try {
         
-            const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
-            // const cfmUrl="http://localhost:1738/trxnStatus"
+            // const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
+            const cfmUrl="http://localhost:1738/trxnStatus"
             const response = await fetch(cfmUrl,{
             method:"POST",
             headers:{
@@ -123,5 +123,3 @@ function formatDate(isoString) {
     return date.toLocaleString("en-US", options).replace(",", "") + " at " + date.toLocaleString("en-US", { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase();
 }
 
-// Example Usage
-console.log(formattedDate); // Output: "Mar 4, 2025 at 9:24pm"
