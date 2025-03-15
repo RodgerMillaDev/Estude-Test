@@ -1,13 +1,19 @@
 
 const mainURL=decodeURIComponent(window.location.search)
-const urlArray = mainURL.split("?")
+const urlArray =  mainURL.split("?")
 const urlSp=urlArray[1].split("&")
-const userID =urlSp[0]
+const userID=urlSp[0]
+const urlTopic=urlArray[2]
+const cleanUrlTopic=urlTopic.split("&")
+const actTopic=cleanUrlTopic[0]
 var isPaid=false
 var signature;
 
-console.log(userID)
+console.log(actTopic)
 
+if(actTopic=='' || actTopic==undefined ||!actTopic){
+    window.location.href="index.html"
+}
 
 async function checkPayment(){
 
@@ -60,36 +66,45 @@ async function checkPayment(){
                     console.log(signature)
                     isPaid=true;
                     console.log(result)
-                    Swal.fire({
-                        title: "Payment Successful",
-                        text: `Your $ ${paidAmount} transaction has been received`,
-                        icon: "success",
-                        showCancelButton: false,
-                        confirmButtonColor: "#3085d6",
-                        confirmButtonText: "Ok"
-                      }).then((result) => {
-                        firebase.firestore().collection("Users").doc(userID).update({
-                            signature:signature
-                        }).then(()=>{
 
-                            document.getElementById("paidDate").innerText=formatDate(paidAmount)
-                            document.getElementById("payStatusH4").innerText="Payment Received"
-                            document.getElementById("payStatusP").innerText="Proceed to your test"
-                            document.getElementById("paymentStatusDate").style.display='flex'
-                            document.getElementById("paymentStatusMethod").style.display='flex'
-                            document.getElementById("paymentStatusSt").style.display='flex'
-                            document.getElementById("cnfPayLoader").style.display="none"
-                            document.getElementById("statusBtn").style.display="block"
-                            document.getElementById("statusBtn").innerText="Proceed To Test"
-                                if (result.isConfirmed && signature) {
+
+                    firebase.firestore().collection("Users").doc(userID).update({
+                        signature:signature
+                    }).then(()=>{
+
+                        document.getElementById("paidDate").innerText=formatDate(paidAmount)
+                        document.getElementById("payStatusH4").innerText="Payment Received"
+                        document.getElementById("payStatusP").innerText="Proceed to your test"
+                        document.getElementById("paymentStatusDate").style.display='flex'
+                        document.getElementById("paymentStatusMethod").style.display='flex'
+                        document.getElementById("paymentStatusSt").style.display='flex'
+                        document.getElementById("cnfPayLoader").style.display="none"
+                        document.getElementById("statusBtn").style.display="block"
+                        document.getElementById("statusBtn").innerText="Proceed To Test"
+                            if (result.isConfirmed && signature) {
+    
+                                window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic;    
+                                
+                            }
+                    })
+
+                  
         
-                                         window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature
-                                }
-                        })
-
-
+                      const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.onmouseenter = Swal.stopTimer;
+                          toast.onmouseleave = Swal.resumeTimer;
+                        }
                       });
-                    
+                      Toast.fire({
+                        icon: "success",
+                        title: `Your $ ${paidAmount} transaction has been received`
+                      })
                 }
 
             }
@@ -103,7 +118,7 @@ async function checkPayment(){
             Swal.fire("An error occured.Try Again Later")
         }
     }else if(stBtn==="Proceed To Test" && isPaid==true){
-        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature;    }
+        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic;    }
    
 }
 

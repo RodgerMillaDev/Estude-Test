@@ -21,7 +21,7 @@ if(urlTopic=='' || undefined){
 
 }
 
-if(uid==""){
+if(uid=="" || uid ==null){
     window.location.href="index.html"
 }else{
 
@@ -43,7 +43,7 @@ async function payNow(){
                     headers:{
                         "Content-type":"application/json",
                     },
-                    body:JSON.stringify({uid,payEmail})
+                    body:JSON.stringify({uid,payEmail,urlTopic})
 
 
                 })

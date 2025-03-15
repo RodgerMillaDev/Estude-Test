@@ -1,13 +1,52 @@
 
-rndmsearchWikipedia()
+var isAuth=false
+var authID=''
+var authEmail=''
 
 
+
+
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        var uid=user.uid
+        isAuth= true
+        authID=uid
+        firebase.firestore().collection("Users").doc(authID).get().then((userCred)=>{
+            var userEmail = userCred.data().em;
+             authEmail = userEmail;
+            var userName = userCred.data().name;
+            document.getElementById("libUserName").innerText=userName;
+            document.getElementById("libUserEmail").innerText=userEmail;
+         
+       })
+    
+    }else{
+         isAuth=false
+    }
+
+    
+})
 
 
 async function searchWikipedia() {
   let query = document.getElementById('librarySearch').value.trim();
   if (!query) {
-      Swal.fire("Please enter a topic!");
+    //   Swal.fire("Please enter a topic!");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "warning",
+        title: "Enter a topic to search"
+      });
       return;
   }
 
@@ -100,19 +139,16 @@ function displayResults(results) {
   document.getElementById("libRightBottomWrap").innerHTML=smpTopic
 }
 
+rndmsearchWikipedia()
+
+
 function toTest(e){
 
-  firebase.auth().onAuthStateChanged((user)=>{
-   if(user){
-       var uid=user.uid
-       firebase.firestore().collection("Users").doc(uid).get().then((userCred)=>{
-            var userEmail = userCred.data().em;
-            console.log(userEmail)
-            localStorage.setItem("EstudeUserID",uid)
-            localStorage.setItem("EstudeUserEmail",userEmail)
-            window.location.href='checkout.html'+"?"+uid+"?"+e
-       })
-    
+   if(isAuth){
+       
+       localStorage.setItem("EstudeUserID",authID)
+       localStorage.setItem("EstudeUserEmail",authEmail)
+       window.location.href='checkout.html'+"?"+authID+"?"+e
 
       
    }else{
@@ -133,6 +169,13 @@ function toTest(e){
          });
    }
 
-  })
    
 }
+
+
+
+document.addEventListener("keydown",function(event){
+    if(event.key==="Enter"){
+        searchWikipedia()
+    }
+})

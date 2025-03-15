@@ -1564,11 +1564,12 @@ footer{
 #TestPage{
   width: 100vw;
   height: 100vh;
-  
+  overflow: hidden !important;  
 }
 .testpagePlacer{
     width: 90%;
     margin:  0 auto;
+    overflow: hidden !important;
     height: 100%;
     
 }
@@ -1612,7 +1613,7 @@ footer{
 
 }
 .testClock p{
-    margin-right: 10px;
+    margin-left: 10px;
     color: aliceblue;
     font-size: 16px;
 }
@@ -1633,6 +1634,7 @@ footer{
 }
 .deQuizes{
     height: 80vh;
+    width: 100%;
 
     transition: transform 0.3s ease-in-out;
 
@@ -1661,13 +1663,18 @@ footer{
 }
 .testQuestion{
     padding: 0px 0 0 10px;
+    
     height: fit-content;
+}
+.testQuestion p{
+  font-size: 16px;
+  width: calc(100% - 15px);
+
 }
 .testChoicesWrap{
     height: 60vh;
 }
 .testChoices{
-    margin-top: 20px ;
     height:  auto;
     overflow-y: auto;
     display: flex;
@@ -1678,7 +1685,7 @@ footer{
     cursor: pointer;
     width: 95%;
     border-radius: 40px;
-    margin:  10px auto 0 auto;
+    margin:  5px auto 0 auto;
     transition: .3s ease;
 }
 .testChoices span{
@@ -1686,7 +1693,7 @@ footer{
     height: 8px;
     background: var(--ter2-color);
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .sltChoiceUser{
@@ -1695,6 +1702,8 @@ footer{
 }
 .testChoices p{
     font-size: 16px;
+    height: fit-content;
+    padding: 10px 0;
 }
 .testNxtBtn{
   width: 100%;
@@ -1735,6 +1744,13 @@ footer{
     position: absolute;
 }
 
+#examBody{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+
+}
 
 .fonActNav{
     position: fixed;
@@ -1779,7 +1795,7 @@ footer{
     color: var(--ter3-color);
     font-size: 30px;
 }
-.Library{
+#Library{
     width: 100vw;
     background: rgb(255, 255, 255);
 
@@ -2496,6 +2512,7 @@ footer{
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    background: red;
 }
 .resultBtn{
     height: 60px;

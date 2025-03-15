@@ -101,3 +101,20 @@ function toAbout(){
 function toReviews(){
   window.location.href='index.html#Reviews'
 }
+function toTrialTest(){
+  window.location.href=''
+}
+
+function toMyAccount(){
+  document.getElementById("fonActNav").style.left="-102%"
+  document.getElementById("libRight").style.display="none"
+  document.getElementById("libLeftTop").style.display="flex"
+  document.getElementById("libLeftBtm").style.display="flex"
+}
+function toListTest(){
+  document.getElementById("fonActNav").style.left="-102%"
+  document.getElementById("libLeftTop").style.display="none"
+  document.getElementById("libLeftBtm").style.display="none"
+  document.getElementById("libRight").style.display="block"
+
+}

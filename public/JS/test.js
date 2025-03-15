@@ -3,16 +3,10 @@ const deURL= decodeURIComponent(window.location.search)
 const SU=deURL.split("?")
 const uid= SU[1]
 let userAnswers=[];
+let urlTopic=SU[4]
 let questions;
 
-// const animationPath ='./Media/logoLoader.json';
-// const animation = lottie.loadAnimation({
-// container: document.getElementById('actPreLoader'), 
-// renderer: 'svg',
-// loop: true,
-// autoplay: true,
-// path: animationPath 
-// });
+console.log(urlTopic)
  let socket;
 
 firebase.auth().onAuthStateChanged((user)=>{
@@ -26,13 +20,15 @@ firebase.auth().onAuthStateChanged((user)=>{
             socket.onopen = () =>{
                 socket.send(JSON.stringify({type:'socketAuth', socketID:userID}))
                 console.log('user connected')
+                document.getElementById("testTopicExam").innerText=urlTopic
+                generateQuiz(socket)
             }
 
             socket.onmessage = (wsText) =>{
                  const msgData = JSON.parse(wsText.data)
                  if(msgData.type==="socketAuth"){
                     console.log(msgData.status)
-                    generateQuiz(socket)
+                  
 
                  }else if(msgData.type==='socketQuizData'){
                     console.log(msgData.status)
@@ -71,11 +67,12 @@ async function generateQuiz(socket){
             headers: {
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({uid:uid})
+            body:JSON.stringify({uid:uid,urlTopic:urlTopic})
 
         })
 
         const result = await response.json()
+        console.log(result)
         questions =result.data
         localStorage.setItem("quizesData",result.data)
         socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions}))

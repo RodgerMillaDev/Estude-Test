@@ -1247,6 +1247,7 @@ footer{
     grid-area: 1/1/7/2;
     border-radius: 10px;
     overflow: hidden;
+    display: block;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.11);
     background: rgb(255, 255, 255);
 }
@@ -1701,6 +1702,60 @@ footer{
     }
 
 
+    .testpagePlacer{
+        width: 100%;
+        margin:  0 auto;
+        height: 100%;        
+    }
 
+    .testNavPlacer{
+        height: 6vh;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        width: 95%;
+        background: aliceblue;
+        border-radius: 50px;
+        background: var(--text-color);
+        color: aliceblue;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .testTitle{
+        height: 100%;
+        width: 70%;
+        font-size: 16px;
+        display: flex;
+        margin-left: 2%;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .deQuizes{
+        height: 80vh;
+        width: 100%;
+    
+        transition: transform 0.3s ease-in-out;
+    
+    
+    }
+    .testChoices span{
+        width: 8px;
+        height: 8px;
+        background: var(--ter2-color);
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    .testChoices p{
+        width: calc(100% - 15px);
+    }
+    .resultWrapper{
+        width: 90vw;
+        border-radius: 20px;
+        height: 85vh;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        background-image: linear-gradient(109deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 100%),linear-gradient(125deg, var(--ter-color),var(--sec-color));
+    
+    }
 }
 
