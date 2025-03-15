@@ -425,12 +425,12 @@
 
 #Grid{
     width: 100vw;
-    height: 80vh;
-    padding:30px 0;
+    height: 70vh;
+    padding:5vh 0;
  }
  .gridplacer{
      margin: 0 auto;
-     width: 90%;
+     width: 95%;
      height: 100%;
  
  }
@@ -466,7 +466,7 @@
  .gridWrap{
      height: 50vh;
      display: grid;
-     width: 90vw;
+     width: 95vw;
      justify-content: center;
      border-radius: 10px;
      gap: 10px;
@@ -1586,7 +1586,7 @@ footer{
         gap: 20px;
         justify-content: space-between;
         align-items: center;
-        width: 90%;
+        width: 85%;
         margin: 0 auto;
     }
     .stepTop{
@@ -1618,7 +1618,89 @@ footer{
         justify-content: center;
         align-items: center;
     }
-    
+
+    #Mission{
+        width: 100vw;
+        height: fit-content;
+        padding: 5vh 0;
+    }
+    .missionPlacer{
+        width: 95%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .sectionGenintro{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        margin-bottom: 30px;
+        align-items: center;
+    }
+    .secGenIntroPT{
+        color: var(--sec-color);
+    }
+    .sectionGenintro h2{
+        font-family: kanitBold;
+        font-size: 1.8rem;
+        color: var(--text-color);
+    }
+    .secGenIntroPD{
+        width: 90%;
+        color: rgb(56, 56, 56);
+        text-align: center;
+      }
+      .missionCont{
+        width: 100%;
+        height: fit-content;
+        }
+    .missionSums{
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        height: 150px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .msmSum{
+        width: 160px;
+        height: 90px;
+        margin: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .missionCardPlacer{
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        flex-direction: column;
+        color: aliceblue;
+        height: 70%;
+    }
+    .missionActCard{
+        height: 180px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .missionCardPlacer h3{
+        font-size: 1.5rem;
+    }
+
+
 
 }
 

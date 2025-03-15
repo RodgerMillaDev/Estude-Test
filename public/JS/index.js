@@ -92,7 +92,7 @@ function cancelFonNav(){
 }
 
 function toAffiliation(){
-  window.location.href='affiliatedexam.html'
+  window.location.href='affiliate.html'
 
 }
 function toAbout(){
