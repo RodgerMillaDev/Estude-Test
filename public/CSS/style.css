@@ -2856,13 +2856,13 @@ footer{
     flex-direction: column;
 }
 .msmSum h2{
-  font-size: 40px;
+  font-size: 35px;
   color: var(--text-color);
 
 }
 .msmSum p{
     color: var(--text-color);
-    font-size: 15px;
+    font-size: 13px;
     color: rgb(56, 56, 56);
 
 }
@@ -2903,7 +2903,7 @@ footer{
     height: 70%;
 }
 .missionCardPlacer h3{
-    font-size: 28px;
+    font-size: 22px;
 }
 .priceandIcon{
     width: 100%;
