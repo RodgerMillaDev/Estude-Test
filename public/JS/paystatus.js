@@ -26,8 +26,8 @@ async function checkPayment(){
     if(stBtn=="Confirm Payment"){
         try {
         
-            // const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
-            const cfmUrl="http://localhost:1738/trxnStatus"
+            const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
+            // const cfmUrl="http://localhost:1738/trxnStatus"
             const response = await fetch(cfmUrl,{
             method:"POST",
             headers:{
@@ -84,7 +84,7 @@ async function checkPayment(){
                             if (result.isConfirmed && signature) {
     
                                 window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic;    
-                                
+
                             }
                     })
 

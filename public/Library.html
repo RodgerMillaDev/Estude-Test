@@ -16,6 +16,8 @@
         <link rel="shortcut icon" href="./Media/favLightLogo.png" type="image/x-icon">
         <title>Estude Test</title>
 
+        
+
     </head>
 </head>
 <body>
@@ -28,9 +30,9 @@
       <div class="fonActNav" id="fonActNav">
         <div class="fonActNavPlacer">
             <div onclick="toAffiliation()"> <p>Do Your Test</p>  </div>
-            <div onclick="toLibrary()"> <p>Library</p> </div>
+            <div onclick="toListTest()"> <p>Library</p> </div>
             <div onclick="toAbout()"> <p>About Us</p></div>
-            <div onclick="toReviews()"> <p>Reviews</p></div>
+            <div onclick="toMyAccount()"> <p>My Tests</p></div>
             <div onclick="toAuth()"> <p>Sign In</p></div>
             <div class="fonNavCancel" onclick="cancelFonNav()">
                 <i class="fa-solid fa-xmark"></i>
@@ -48,7 +50,7 @@
                 <div class="navLinks">
                     <div onclick="toAffiliation()"><p>Do Your Test</p></div>
                     <div onclick="toLibrary()"><p>Library</p></div>
-                    <div onclick="toAbout()"><p>About</p></div>
+                    <div onclick="toAbout()"><p>About Us</p></div>
                     <div onclick="toReviews()"><p>Reviews</p></div>
                     <div onclick="toAuth()" class="navAuth"><p id="navAuth">Sign in</p></div>
                 </div>
@@ -60,149 +62,38 @@
 
         <div class="libraryPlacer">
 
-            <div class="libLeftTop">
+            <div class="libLeftTop" id="libLeftTop">
                 <div class="libLeftTopWraper">
                     <div class="libLeftWraperImg">
                         <img width="10px" src="./Media/newUse.png" alt="">
                     </div>
-                    <p>Guest User</p>
-                    <p>- not signed in -</p>
+                    <p id="libUserName">Guest User</p>
+                    <p id="libUserEmail">- not signed in -</p>
                     <button id="miniProfileBtn">Do a test</button>
                 </div>
 
             </div>
-            <div class="libLeftBtm">
+            <div class="libLeftBtm" id="libLeftBtm">
                 <div class="libLeftBtmWraper">
                     <h3>Completed Test</h3>
                     <div class="hseparator"></div>
                     <div class="recentTestWrap">
-                      
-                        <!-- <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating ePerfom">Excellent</p>
-                            </div>
-                            <div class="recentTestScore ePerfom" ><p>96%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating aPerfom">Average</p>
-                            </div>
-                            <div class="recentTestScore aPerfom" ><p >55%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating pPerfom">Poor</p>
-                            </div>
-                            <div class="recentTestScore pPerfom" ><p>34%</p></div>
-                            
-                        </div>
-                        
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating ePerfom">Excellent</p>
-                            </div>
-                            <div class="recentTestScore ePerfom" ><p>96%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating ePerfom">Excellent</p>
-                            </div>
-                            <div class="recentTestScore ePerfom" ><p>96%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating aPerfom">Average</p>
-                            </div>
-                            <div class="recentTestScore aPerfom" ><p >55%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating pPerfom">Poor</p>
-                            </div>
-                            <div class="recentTestScore pPerfom" ><p>34%</p></div>
-                            
-                        </div>
-                        
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating ePerfom">Excellent</p>
-                            </div>
-                            <div class="recentTestScore ePerfom" ><p>96%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating ePerfom">Excellent</p>
-                            </div>
-                            <div class="recentTestScore ePerfom" ><p>96%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating aPerfom">Average</p>
-                            </div>
-                            <div class="recentTestScore aPerfom" ><p >55%</p></div>
-                            
-                        </div>
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating pPerfom">Poor</p>
-                            </div>
-                            <div class="recentTestScore pPerfom" ><p>34%</p></div>
-                            
-                        </div>
-                        
-                        <div class="recentTest">
-                            <div class="rTestInfo">
-                                <p>Web Design</p>
-                                <p class="prfRating ePerfom">Excellent</p>
-                            </div>
-                            <div class="recentTestScore ePerfom" ><p>96%</p></div>
-                            
-                        </div>
-                         -->
-
-
                          <div class="emptyCompeletedTest">
                             <i class="icofont-dropbox"></i>
                             <p>You have not completed any test</p>
-
                          </div>
-                        
-                   
-                        
-                   
-                      
-                       
-                   
                     </div>
                     
                 </div>
 
             </div>
-            <div class="libRight">
+            <div class="libRight" id="libRight">
 
                     <div class="libRightTop">
                         <img src="./Media/newLightLogo.png" alt="">
                         <div class="libRightTopPlacer">
                             <h2>What test are you taking today?</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima aspernatur quis non. Quisquam, consequuntur accusantium?</p>
+                            <p>Find and start your test with ease. Choose from various assessments designed to evaluate your skills. Are you ready</p>
                             <div class="libSearchWrap">
 
                                 <div class="libSearchInput">
@@ -234,20 +125,17 @@
 
       </section>
       
-  
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./JS/config.js"></script>
-<script src="./JS/index.js"></script>
-<script src="./JS/library.js"></script>
-<script src="./JS/auth.js"></script>
-<script src="./JS/authSec.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./JS/config.js"></script>
+    <script src="./JS/index.js"></script>
+    <script src="./JS/library.js"></script>
+    <script src="./JS/authSec.js"></script>
       <script>
         AOS.init();
       </script>

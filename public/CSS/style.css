@@ -377,7 +377,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     width: 80%;
     color: aliceblue;
 }
-.rankPlacer .icofont-medal{
+.rankPlacer i{
     color: aliceblue;
     margin-right: 10px;
     font-size: 40px;
@@ -931,6 +931,9 @@ footer{
 }
 .ftmini1Loc{
     height: 30%;
+}
+.ftmini1Loc p{
+    margin: 2px 0;
 }
 .ftmini1 p span{
   color: #4BBEFF;
