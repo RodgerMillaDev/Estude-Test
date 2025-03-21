@@ -3,92 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Carousel</title>
+    <title>Certificate Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+ 
+@font-face {
+    font-family: kanitBold;
+    src: url(./Media/Kanit/Kanit-Medium.ttf);
+}
 
-        .carousel-container {
-            width: 300px; /* Adjust as needed */
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-            border: 2px solid #000;
-        }
+body {
+    font-family: kanitBold;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+.container {
+    margin-top: 20px;
+}
 
-        .carousel-wrapper {
-            display: flex;
-            transition: transform 0.3s ease-in-out;
-        }
+#certificate {
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 0px 10px gray;
+}
 
-        .carousel-card {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            font-weight: bold;
-            background-color: lightblue;
-        }
+.certificate-border {
+    padding: 20px;
+    border: 5px solid rgb(0, 200, 255);
+}
 
-        .controls {
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
+h1 {
+    font-size: 26px;
+    color: #333;
+}
 
-        button {
-            padding: 10px;
-            cursor: pointer;
-        }
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 20px;
+    color: #555;
+}
+
+p {
+    font-size: 16px;
+    color: #444;
+}
+
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.signature-section div {
+    width: 45%;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: gold;
+    border: none;
+    color: black;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: darkgoldenrod;
+}
+
     </style>
 </head>
 <body>
-
-    <div class="carousel-container">
-        <div class="carousel-wrapper">
-            <div class="carousel-card" style="background-color: lightblue;">Card 1</div>
-            <div class="carousel-card" style="background-color: lightcoral;">Card 2</div>
-            <div class="carousel-card" style="background-color: lightgreen;">Card 3</div>
+    <div class="container">
+        <div id="certificate">
+            <div class="certificate-border">
+                <h1>Certificate of Completion</h1>
+                <img width="30px" style="position: absolute;" src="./Media/favLightLogo.png" alt="">
+                <p>This is to certify that</p>
+                <h2 id="student-name">[Name]</h2>
+                <p>has successfully completed</p>
+                <h3 id="course-name">[Course Name]</h3>
+                <p>on <span id="completion-date">[Date]</span></p>
+                <div class="signature-section">
+                    <div>
+                        <hr>
+                        <p>Instructor</p>
+                    </div>
+                    <div>
+                        <hr>
+                        <p>Director</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <input type="text" id="courseInput" placeholder="Enter course name">
+        <button onclick="generateCertificate()">Generate</button>
+        <button onclick="downloadCertificate()">Download</button>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <div class="controls">
-        <button id="prevBtn">Prev</button>
-        <button id="nextBtn">Next</button>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="script.js"></script>  <!-- Ensure this is after html2canvas -->
 
     <script>
-        const wrapper = document.querySelector('.carousel-wrapper');
-        const cards = document.querySelectorAll('.carousel-card');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
 
-        let currentIndex = 0;
 
-        function updateCarousel() {
-            const offset = -currentIndex * 100 + '%';
-            wrapper.style.transform = `translateX(${offset})`;
-        }
+html2canvas(document.getElementById("certificate"), {
+    backgroundColor: "#ffffff"  // Ensures a solid white background
+}).then(canvas => {
+    // let link = document.createElement("a");
+    // link.href = canvas.toDataURL("image/png");
+    // link.download = "certificate.png";
+    // link.click();
+});
 
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < cards.length - 1) {
-                currentIndex++;
-                updateCarousel();
-            }
-        });
 
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
-        });
+
+        function generateCertificate() {
+    let name = document.getElementById("nameInput").value;
+    let course = document.getElementById("courseInput").value;
+    let today = new Date().toLocaleDateString();
+
+    document.getElementById("student-name").innerText = name;
+    document.getElementById("course-name").innerText = course;
+    document.getElementById("completion-date").innerText = today;
+}
+
+// function downloadCertificate() {
+//     html2canvas(document.getElementById("certificate")).then(canvas => {
+//         let link = document.createElement("a");
+//         link.href = canvas.toDataURL("image/png");
+//         link.download = "certificate.png";
+//         link.click();
+//     });
+// }
+
+function downloadCertificate() {
+    const { jsPDF } = window.jspdf; // Access jsPDF from the CDN
+
+    const certificate = document.getElementById("certificate");
+
+    html2canvas(certificate, { scale: 2, backgroundColor: "#ffffff" }).then(canvas => {
+        let imgData = canvas.toDataURL("image/png"); // Convert to image
+        let pdf = new jsPDF("landscape"); // Create PDF in landscape mode
+
+        let imgWidth = 280;  // PDF width (adjust as needed)
+        let imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
+
+        pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+        pdf.save("certificate.pdf"); // Download as certificate.pdf
+    });
+}
+
+
     </script>
-
 </body>
 </html>
