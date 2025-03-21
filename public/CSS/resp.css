@@ -1671,13 +1671,17 @@ footer{
     }
 
     .msmSum{
-        width: 160px;
+        width: 170px;
         height: 90px;
         margin: 0 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+    }
+    .msmSum p{
+        font-size: 10px;
+
     }
     .missionCardPlacer{
         width: 85%;
@@ -1698,7 +1702,7 @@ footer{
     }
 
     .missionCardPlacer h3{
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
 
