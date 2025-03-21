@@ -1,21 +1,23 @@
-
-const deURL= decodeURIComponent(window.location.search)
-const SU=deURL.split("?")
-const uid= SU[1]
-let userAnswers=[];
-let urlTopic=SU[4]
+const deURL = decodeURIComponent(window.location.search);
+const SU = deURL.split("?");
+const uid = SU[1];
+let userAnswers = [];
+let urlTopic = SU[4];
 let questions;
+let socket;
+let quizIndex = 0; // Current question index
+let timeLeft = 90; // Each question has 1.5 minutes
+let timerInterval;
+let isTestCompleted = false;
 
-console.log(urlTopic)
- let socket;
 
 firebase.auth().onAuthStateChanged((user)=>{
     if(user){
 
         var userID=user.uid
         if(userID === uid){
-            //  socket= new WebSocket('ws://localhost:1738')
-            socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
+             socket= new WebSocket('ws://localhost:1738')
+            // socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
 
             socket.onopen = () =>{
                 socket.send(JSON.stringify({type:'socketAuth', socketID:userID}))
@@ -60,8 +62,8 @@ firebase.auth().onAuthStateChanged((user)=>{
 
 async function generateQuiz(socket){
     try {
-        const bUrl = 'https://edutestbackend.onrender.com/generateQuiz'
-        // const bUrl = 'http://localhost:1738/generateQuiz'
+        // const bUrl = 'https://edutestbackend.onrender.com/generateQuiz'
+        const bUrl = 'http://localhost:1738/generateQuiz'
         const response = await fetch(bUrl,{
             method:'POST',
             headers: {
@@ -86,8 +88,9 @@ async function generateQuiz(socket){
 
 
 function renderQuestions(questions) {
-    
     var deQuiz = "";
+    userAnswers = new Array(questions.length).fill({ answerIndex: null, selectedAnswer: "" }); // Initialize blank answers
+
     questions.forEach((question) => {
         var deQ = question.question;
         var opts = question.options;
@@ -123,6 +126,8 @@ function renderQuestions(questions) {
 
     document.querySelector(".deQuizes").innerHTML = deQuiz;
     document.getElementById("preloader").style.display = "none";
+
+    console.log(userAnswers); // Check initialized array
 }
 
 
@@ -137,10 +142,18 @@ function sltAnswer(questionIndex, answerIndex, selectedAnswer) {
     console.log(userAnswers); // Check the selected answers
 }
 
+function analyseResult(testResult){
+    var exmCheat=false;
+    const ticks=testResult.filter(c =>c.isCorrect).length;
+    console.log("RESULT:" + `${ticks}/10`)
+    setTimeout(() => {
+        localStorage.setItem("ticks",ticks)
+        window.location.href="result.html"+"?"+uid+"?"+ticks+"?"+urlTopic+"?"+exmCheat
+    }, 4000);
+
+}
 
 
-
-let quizIndex=0
 
 function tonxtQuiz(){
 
@@ -150,7 +163,8 @@ function tonxtQuiz(){
     quizIndex++;
     const offset = -quizIndex* 100 + '%'
     quizesWrap.style.transform=`translateY(${offset})`
-
+    startQuizTimer()
+  
   }
   if(quizIndex==8){
     document.getElementById('nextBtnQuiz').innerText="Submit";
@@ -182,11 +196,28 @@ document.querySelector(".deQuizes").addEventListener("click", function (event) {
 });
 
 
-function analyseResult(testResult){
-    const ticks=testResult.filter(c =>c.isCorrect).length;
-    console.log("RESULT:" + `${ticks}/10`)
-    setTimeout(() => {
-        window.location.href="result.html"
-    }, 4000);
 
+
+function startQuizTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 90; // Reset time for the current question
+    const timerDisplay = document.getElementById("quizTime"); // Ensure you have an element for this
+    timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            tonxtQuiz();
+            return;
+        }
+        timeLeft--;
+        timerDisplay.innerText = formatTime(timeLeft);
+    }, 1000);
 }
+
+function formatTime(seconds) {
+    let minutes = Math.floor(seconds / 60);
+    let secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+}
+
+startQuizTimer();
+

@@ -30,14 +30,17 @@
                           <circle stroke="#EAEAEA" stroke-width="5.5" cx="50" cy="50" r="30" fill="none"/>
                           <circle id="progress--circle"
                            stroke="#000000" 
-
-                           
                            stroke-width="5.5" cx="50" cy="50" r="30" fill="none" pathLength="100"/>
-                          <text id="progress--text" x="50" y="50" text-anchor="middle" dominant-baseline="middle">65%</text>
+                          <text id="resultCirlePerc" x="50" y="50" text-anchor="middle" dominant-baseline="middle">
+                            <!-- 0% -->
+                            <tspan id="percentageValue">0</tspan>
+
+
+                          </text>
                         </svg>
                     </div>
                   
-                   <h4>Grade B+</h4>
+                   <h4>Grade <span id="circleGrade"></span></h4>
 
             </div>
             <div class="resultBottom">
@@ -48,17 +51,22 @@
                     <div class="resultDet">
                         
                         <p>Topic</p>
-                        <p>Web Design</p>
+                        <p id="topicTaken"></p>
+                    </div>
+                    <div class="resultDet">
+                        
+                        <p>Test irregularity</p>
+                        <p>None</p>
                     </div>
                     <div class="resultDet">
                         
                         <p>Level</p>
-                        <p>Skilled</p>
+                        <p>Intermidiate</p>
                     </div>
                     <div class="resultDet">
                         
                         <p>Performance</p>
-                        <p>87%</p>
+                        <p><span id="scorePerc">0</span>%</p>
                     </div>
                     <div class="resultBtn">
                         <button>Repeat</button>
@@ -81,8 +89,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./JS/config.js"></script>
 <script src="./JS/index.js"></script>
-<script src="./JS/library.js"></script>
-<script src="./JS/auth.js"></script>
+<script src="./JS/result.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <script>
