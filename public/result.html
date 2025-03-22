@@ -15,11 +15,56 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" integrity="sha512-jEnuDt6jfecCjthQAJ+ed0MTVA++5ZKmlUcmDGBv2vUI/REn6FuIdixLNnQT+vKusE2hhTk2is3cFvv5wA+Sgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="shortcut icon" href="./Media/favLightLogo.png" type="image/x-icon">
         <title>Estude Test</title>
-
+     <style>
+        
+     </style>
     </head>
 </head>
 <body>
 
+
+    <div id="certBack">
+
+        <div class="certWrap" id="certWrap">
+            <div class="cerTri1">
+                                <img src="./Media/newBgPattern.png" alt="">
+            </div>
+            <div class="cerTri2">
+                <img src="./Media/newBgPattern.png" alt="">
+            </div>
+         
+            <div class="badge">
+                <img src="./Media/certB-Photoroom.png" alt="">
+            </div>
+   
+            <div class="certPlacer">
+                <div class="certTop">
+                    <div class="certLogo">
+                        <img width="100px" src="./Media/authLogo2.png" alt="">
+                    </div>
+                    <div class="certQR">
+                      <img width="100px" id="qrImage" src="" alt="">
+                    </div>
+                </div>
+                <div class="certMid">
+                    <h2>Certificate of Completion</h2>
+                    <p>This is to certify that </p>
+                    <h3 id="certOwner"></h3>
+                    <p>has completed a test in</p>
+                    <h3 id="certTopic"></h3>
+                    <p>on</p>
+                    <p id="certDate"></p>
+                    <div class="deGrade">
+                    <h3>Grade</h3>
+                    <h3 id="certGrade"></h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
  
       <section id="Result">
         <div class="resultWrapper">
@@ -70,7 +115,7 @@
                     </div>
                     <div class="resultBtn">
                         <button>Repeat</button>
-                        <button>Download Result</button>
+                        <button onclick="downloadCertificate()">Download Result</button>
                     </div>
                 </div>
             </div>
@@ -95,5 +140,11 @@
       <script>
         AOS.init();
       </script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+          <script>
+ 
+                </script>
 </body>
 </html>

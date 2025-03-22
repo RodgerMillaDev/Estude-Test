@@ -12,6 +12,10 @@ if(uid !=offUID){
 
     })
 }
+var userNameEst=localStorage.getItem("userNameEst")
+var clnName=userNameEst.replace(/\s+/g, "-")
+console.log(clnName)
+
 
 if(urlTopic=='' || undefined){
    window.location.href='library.html'
@@ -43,7 +47,7 @@ async function payNow(){
                     headers:{
                         "Content-type":"application/json",
                     },
-                    body:JSON.stringify({uid,payEmail,urlTopic})
+                    body:JSON.stringify({uid,payEmail,urlTopic,clnName})
 
 
                 })

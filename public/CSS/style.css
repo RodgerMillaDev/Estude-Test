@@ -2933,3 +2933,161 @@ footer{
     background-image: linear-gradient(109deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 100%),linear-gradient(125deg, var(--sec-color),var(--ter-color));
 
 }
+
+#certBack{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.372);
+    z-index: -5;
+    position: fixed;
+    
+
+}
+
+.certWrap{
+    width: 650px;
+    height: 450px;
+    overflow: hidden;
+    margin: auto;
+    border-radius: 5px;
+    width: 650px;
+    height: 450px;
+    max-width: 650px;
+    max-height: 450px;
+    min-width: 650px;
+    min-height: 450px;
+    
+    /* Prevent scaling */
+    transform: none;
+    zoom: 1;
+
+    background: white;
+    background-image: linear-gradient(109deg, rgba(236, 236, 236,0.02) 0%, rgba(236, 236, 236,0.02) 13%,transparent 13%, transparent 64%,rgba(55, 55, 55,0.02) 64%, rgba(55, 55, 55,0.02) 71%,rgba(239, 239, 239,0.02) 71%, rgba(239, 239, 239,0.02) 100%),linear-gradient(205deg, rgba(8, 8, 8,0.02) 0%, rgba(8, 8, 8,0.02) 1%,transparent 1%, transparent 60%,rgba(9, 9, 9,0.02) 60%, rgba(9, 9, 9,0.02) 80%,rgba(198, 198, 198,0.02) 80%, rgba(198, 198, 198,0.02) 100%),linear-gradient(153deg, rgba(134, 134, 134,0.02) 0%, rgba(134, 134, 134,0.02) 30%,transparent 30%, transparent 43%,rgba(85, 85, 85,0.02) 43%, rgba(85, 85, 85,0.02) 47%,rgba(103, 103, 103,0.02) 47%, rgba(103, 103, 103,0.02) 100%),linear-gradient(284deg, rgba(178, 178, 178,0.02) 0%, rgba(178, 178, 178,0.02) 8%,transparent 8%, transparent 47%,rgba(161, 161, 161,0.02) 47%, rgba(161, 161, 161,0.02) 61%,rgba(19, 19, 19,0.02) 61%, rgba(19, 19, 19,0.02) 100%),linear-gradient(125deg, var(--pri2-color),var(--pri-color));
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 0px 10px gray;
+}
+.cerTri1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    left: -50px;
+    transform: rotateY(180deg);
+}
+.cerTri1 img{
+    width: 100%;
+}
+.cerTri2 img{
+    width: 100%;
+}
+.cerTri2{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    right: -90px;
+
+    transform: rotateY(0deg);
+}
+.cerSq1{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    border: 2px solid #00000017;
+    left:50%;
+    transform: translate(-50%,-50%);
+    rotate: 45deg;
+    
+}
+
+.cerSq2{
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    border: 2px solid #00000017;
+    left:12%;
+    top: 20%;
+    transform: translate(-50%,-50%);
+    rotate: 45deg;
+}
+.certPlacer{
+    width: 80%;
+    margin: 0 auto;
+    height: 90%;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.certTop{
+    width: 100%;
+    height: 20%;
+    margin: 0 auto;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.certLogo img{
+    width: 110px;
+}
+.certQR img{
+    width: 50px;
+}
+
+
+.certMid{
+height: 80%;
+display: flex;
+width: 100%;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+.certMid h2,
+.certMid h3
+{
+color: var(--sec-color);
+font-family: kanitBold;
+font-weight: 100;
+margin: 0;
+}
+.certMid p{
+margin: 5px 0;
+font-style: italic;
+font-size: .8rem;
+color: rgb(67, 67, 67);
+}
+.deGrade h4{
+color: rgb(67, 67, 67);
+
+}
+.badge{
+width: auto;
+position: absolute;
+z-index: 6;
+right:5%;
+bottom: 20%;
+
+}
+.badge img{
+width: 150px;
+
+filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.126));
+
+}
+.deGrade{
+display: flex;
+
+width: 30%;
+margin: 0 auto;
+height: 60px;
+justify-content: space-between;
+align-items: center;
+}

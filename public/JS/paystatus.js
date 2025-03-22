@@ -4,12 +4,18 @@ const urlArray =  mainURL.split("?")
 const urlSp=urlArray[1].split("&")
 const userID=urlSp[0]
 const urlTopic=urlArray[2]
+const urlName=urlArray[3]
 const cleanUrlTopic=urlTopic.split("&")
+const cleanUrlName=urlName.split("&")
 const actTopic=cleanUrlTopic[0]
+const actUserNAME=cleanUrlName[0]
+const clnm=actUserNAME.replace("-", " ")
+console.log(clnm)
+
 var isPaid=false
 var signature;
 
-console.log(actTopic)
+
 
 if(actTopic=='' || actTopic==undefined ||!actTopic){
     window.location.href="index.html"
@@ -69,10 +75,13 @@ async function checkPayment(){
 
 
                     firebase.firestore().collection("Users").doc(userID).update({
-                        signature:signature
+                        signature:signature,
+                        latestTestPaid:formatTimestamp(datePaid),
                     }).then(()=>{
 
-                        document.getElementById("paidDate").innerText=formatDate(paidAmount)
+
+                        console.log(datePaid)
+                        document.getElementById("paidDate").innerText=formatTimestamp(datePaid)
                         document.getElementById("payStatusH4").innerText="Payment Received"
                         document.getElementById("payStatusP").innerText="Proceed to your test"
                         document.getElementById("paymentStatusDate").style.display='flex'
@@ -83,7 +92,7 @@ async function checkPayment(){
                         document.getElementById("statusBtn").innerText="Proceed To Test"
                             if (result.isConfirmed && signature) {
     
-                                window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic;    
+                                window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic+" "+actUserNAME;    
 
                             }
                     })
@@ -118,23 +127,23 @@ async function checkPayment(){
             Swal.fire("An error occured.Try Again Later")
         }
     }else if(stBtn==="Proceed To Test" && isPaid==true){
-        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic;    }
+        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic+"?"+actUserNAME   }
    
 }
 
+function formatTimestamp(datePaid) {
+    const date = new Date(datePaid);
+    console.log(date)
 
-function formatDate(isoString) {
-    let date = new Date(isoString);
-
-    let options = {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
+    const options = { 
+        month: "short", 
+        day: "numeric", 
+        year: "numeric", 
+        hour: "numeric", 
+        minute: "2-digit", 
+        hour12: true 
     };
 
-    return date.toLocaleString("en-US", options).replace(",", "") + " at " + date.toLocaleString("en-US", { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase();
+    return date.toLocaleString("en-US", options).replace(",", "") + " at " + date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
 }
 

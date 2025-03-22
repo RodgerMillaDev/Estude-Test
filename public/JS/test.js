@@ -2,53 +2,20 @@ const deURL = decodeURIComponent(window.location.search);
 const SU = deURL.split("?");
 const uid = SU[1];
 let userAnswers = [];
+console.log(userAnswers)
 let urlTopic = SU[4];
 let questions;
-let socket;
 let quizIndex = 0; // Current question index
 let timeLeft = 90; // Each question has 1.5 minutes
 let timerInterval;
 let isTestCompleted = false;
-
 
 firebase.auth().onAuthStateChanged((user)=>{
     if(user){
 
         var userID=user.uid
         if(userID === uid){
-             socket= new WebSocket('ws://localhost:1738')
-            // socket = new WebSocket('https://edutestbackend-wss-official.onrender.com');
-
-            socket.onopen = () =>{
-                socket.send(JSON.stringify({type:'socketAuth', socketID:userID}))
-                console.log('user connected')
-                document.getElementById("testTopicExam").innerText=urlTopic
-                generateQuiz(socket)
-            }
-
-            socket.onmessage = (wsText) =>{
-                 const msgData = JSON.parse(wsText.data)
-                 if(msgData.type==="socketAuth"){
-                    console.log(msgData.status)
-                  
-
-                 }else if(msgData.type==='socketQuizData'){
-                    console.log(msgData.status)
-
-                 }else if(msgData.type==='socketQuizSubmit'){
-                    console.log(msgData.status)
-                    var testResult=msgData.dataResult
-
-                    analyseResult(testResult)
-
-
-
-                 }
-               
-            }
-            socket.onerror = (error) => {
-                console.error('WebSocket error:', error);
-            };
+            connectionWbSocket(userID)
         }else{
             window.location.href="index.html"
   
@@ -58,7 +25,90 @@ firebase.auth().onAuthStateChanged((user)=>{
         window.location.href="index.html"
     }
 })
+let socket;
 
+function connectionWbSocket(userID) {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+        console.log("WebSocket already connected. Reusing connection.");
+        return;
+    }
+
+    console.log("Connecting WebSocket...");
+    socket = new WebSocket('ws://localhost:1738'); // Change to your actual WebSocket server
+
+    socket.onopen = () => {
+        console.log('WebSocket connected');
+        socket.send(JSON.stringify({ type: 'socketAuth', socketID: userID }));
+        document.getElementById("testTopicExam").innerText = urlTopic;
+        generateQuiz(socket);
+        startQuizTimer();
+    };
+
+    socket.onmessage = (wsText) => {
+        const msgData = JSON.parse(wsText.data);
+
+        if (msgData.type === "socketAuth") console.log(msgData.status);
+        if (msgData.type === "socketQuizData") console.log(msgData.status);
+        if (msgData.type === "socketQuizSubmit") analyseResult(msgData.dataResult);
+        if (msgData.type === "examInProgress"){console.log(msgData.status)};
+    };
+
+    socket.onclose = (event) => {
+        console.log("WebSocket closed:", event);
+        reconnectWebSocket(userID);
+    };
+
+    socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+    };
+}
+
+// Reconnect function
+function reconnectWebSocket(userID) {
+    console.log("Reconnecting WebSocket in 3 seconds...");
+    setTimeout(() => connectionWbSocket(userID), 3000);
+}
+
+// Call function on page load
+const storedUserID = localStorage.getItem("userID"); 
+if (storedUserID) {
+    connectionWbSocket(storedUserID);
+}
+
+function closeSocket(){
+    if (socket && socket.readyState === WebSocket.OPEN) {
+        socket.close(); // Close the WebSocket connection
+        console.log("WebSocket connection closed.");
+    }
+    
+}
+
+
+window.addEventListener("beforeunload", async function () {
+    if (socket && socket.readyState === 1) {
+        socket.close(); // Close WebSocket on page unload
+        console.log("WebSocket connection closed.");
+
+    }
+    localStorage.setItem("websocketConnected", "false"); // Reset connection status
+});
+
+let awayTimer;
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        // User switched tab, start the timer
+        awayTimer = setTimeout(() => {
+            Swal.fire("Quiz Irregularity", "You have been kicked out due to quiz irregularity!", "error", ).then(()=>{
+               
+            })
+            alert("You have been away for more than 5 seconds!");
+        }, 5000);
+    } else {
+        // User returned, clear the timer
+        clearTimeout(awayTimer);
+    }
+});
 
 async function generateQuiz(socket){
     try {
@@ -76,15 +126,11 @@ async function generateQuiz(socket){
         const result = await response.json()
         console.log(result)
         questions =result.data
-        localStorage.setItem("quizesData",result.data)
-        socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions}))
         renderQuestions(questions)
     } catch (error) {
          console.log(error)
     }
 }
-
-
 
 
 function renderQuestions(questions) {
@@ -126,8 +172,8 @@ function renderQuestions(questions) {
 
     document.querySelector(".deQuizes").innerHTML = deQuiz;
     document.getElementById("preloader").style.display = "none";
+    socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions,socketID:uid,userSocketAnswers:""}))
 
-    console.log(userAnswers); // Check initialized array
 }
 
 
@@ -152,8 +198,6 @@ function analyseResult(testResult){
     }, 4000);
 
 }
-
-
 
 function tonxtQuiz(){
 
@@ -196,8 +240,6 @@ document.querySelector(".deQuizes").addEventListener("click", function (event) {
 });
 
 
-
-
 function startQuizTimer() {
     clearInterval(timerInterval);
     timeLeft = 90; // Reset time for the current question
@@ -209,7 +251,22 @@ function startQuizTimer() {
             return;
         }
         timeLeft--;
+        if (socket.readyState === 1) { 
+            const messageData = JSON.stringify({
+                type: "examInProgress",
+                socketID: uid,
+                currentQuizNo: quizIndex,
+                userSocketAnswers: userAnswers,
+                quizIndexTimeLeft: formatTime(timeLeft)
+            });
+            
+            socket.send(messageData);
+        } else {
+            console.log("WebSocket not open. Current state:", socket.readyState);
+        }
+        
         timerDisplay.innerText = formatTime(timeLeft);
+        
     }, 1000);
 }
 
@@ -219,5 +276,4 @@ function formatTime(seconds) {
     return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
 }
 
-startQuizTimer();
 
