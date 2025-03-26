@@ -16,7 +16,6 @@ firebase.auth().onAuthStateChanged((user)=>{
              authEmail = userEmail;
             var userName = userCred.data().name;
             localStorage.setItem("userNameEst",userName)
-            alert(userName)
             localStorage.setItem("userEmailEst",userEmail)
             document.getElementById("libUserName").innerText=userName;
             document.getElementById("libUserEmail").innerText=userEmail;

@@ -7,14 +7,13 @@ const urlTopic=urlArray[2]
 const urlName=urlArray[3]
 const cleanUrlTopic=urlTopic.split("&")
 const cleanUrlName=urlName.split("&")
+const ref = cleanUrlName[2]
+const refNo=ref.replace("reference=","")
 const actTopic=cleanUrlTopic[0]
 const actUserNAME=cleanUrlName[0]
 const clnm=actUserNAME.replace("-", " ")
-console.log(clnm)
-
 var isPaid=false
 var signature;
-
 
 
 if(actTopic=='' || actTopic==undefined ||!actTopic){
@@ -39,7 +38,7 @@ async function checkPayment(){
             headers:{
                 'Content-type':'application/json'
             },
-            body:JSON.stringify({refCode})
+            body:JSON.stringify({refCode,userId:userID})
             })
             const result= await response.json()
             console.log(result)
@@ -66,6 +65,8 @@ async function checkPayment(){
                  
             }else if(result.status==true){
                 if(result.message=="Verification successful"){
+                    localStorage.setItem("canDoExams","true")
+
                     var paidAmount = result.data.requested_amount;
                     var datePaid = result.data.transaction_date;
                     signature = result.data.authorization.signature;
@@ -79,8 +80,6 @@ async function checkPayment(){
                         latestTestPaid:formatTimestamp(datePaid),
                     }).then(()=>{
 
-
-                        console.log(datePaid)
                         document.getElementById("paidDate").innerText=formatTimestamp(datePaid)
                         document.getElementById("payStatusH4").innerText="Payment Received"
                         document.getElementById("payStatusP").innerText="Proceed to your test"
@@ -90,11 +89,7 @@ async function checkPayment(){
                         document.getElementById("cnfPayLoader").style.display="none"
                         document.getElementById("statusBtn").style.display="block"
                         document.getElementById("statusBtn").innerText="Proceed To Test"
-                            if (result.isConfirmed && signature) {
-    
-                                window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic+" "+actUserNAME;    
-
-                            }
+                           
                     })
 
                   
@@ -126,8 +121,8 @@ async function checkPayment(){
 
             Swal.fire("An error occured.Try Again Later")
         }
-    }else if(stBtn==="Proceed To Test" && isPaid==true){
-        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic+"?"+actUserNAME   }
+       }else if(stBtn==="Proceed To Test" && isPaid==true){
+        window.location.href="exam.html"+"?"+userID+"?"+isPaid+"?"+signature+"?"+actTopic+"?"+actUserNAME+"?"+refNo+"?"+"cnownzgvwbnzcbevbzbnctnb" }
    
 }
 

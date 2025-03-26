@@ -1,10 +1,13 @@
 
 @media only screen and (min-width: 1620px) {
-    .checkStatusWrap, .checkStatusPlacer,.navPlacer,.companiesPlacer,.hero,.aboutPlacer,.footerPlacer,.libraryPlacer,.checkoutPlacer{
+    .navPlacer,.companiesPlacer,.hero,.aboutPlacer,.footerPlacer,.libraryPlacer,.checkoutPlacer{
         margin: 0 auto;
         width: 1220px !important;
         
         
+    }
+    .checkStatusWrap{
+        width: 25vw;
     }
  
 }
