@@ -39,8 +39,8 @@ async function payNow(){
             try{
                 document.getElementById("checkoutPayNow").style.display="none"
                 document.getElementById("checkoutPayFeeLoader").style.display="block"
-                // var url ="https://edutestbackend.onrender.com/payTest"
-                var url ="http://localhost:1738/payTest"
+                var url ="https://edutestbackend-wss.onrender.com/payTest"
+                // var url ="http://localhost:1738/payTest"
                 const response = await fetch(url,{
 
                     method:"POST",

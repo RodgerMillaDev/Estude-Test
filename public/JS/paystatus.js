@@ -31,8 +31,8 @@ async function checkPayment(){
     if(stBtn=="Confirm Payment"){
         try {
         
-            // const cfmUrl="https://edutestbackend.onrender.com/trxnStatus"
-            const cfmUrl="http://localhost:1738/trxnStatus"
+            const cfmUrl="https://edutestbackend-wss.onrender.com/trxnStatus"
+            // const cfmUrl="http://localhost:1738/trxnStatus"
             const response = await fetch(cfmUrl,{
             method:"POST",
             headers:{
@@ -66,6 +66,7 @@ async function checkPayment(){
             }else if(result.status==true){
                 if(result.message=="Verification successful"){
                     localStorage.setItem("canDoExams","true")
+                    localStorage.setItem("cdtReason","Paid for test")
 
                     var paidAmount = result.data.requested_amount;
                     var datePaid = result.data.transaction_date;
@@ -107,7 +108,7 @@ async function checkPayment(){
                       });
                       Toast.fire({
                         icon: "success",
-                        title: `Your $ ${paidAmount} transaction has been received`
+                        title: `Your $ ${paidAmount*0.01} transaction has been received`
                       })
                 }
 

@@ -10,7 +10,8 @@ let timerInterval;
 // Initialize the Web Worker
 const quizTimerWorker = new Worker("JS/timerWorker.js");
 var canDoExams=localStorage.getItem("canDoExams")
-console.log(canDoExams)
+var cdtReason=localStorage.getItem("cdtReason")
+console.log(urlTopic)
 
 let isTestCompleted = false;
 let userID;
@@ -44,8 +45,8 @@ let socket;
 function connectionWbSocket(userID) {
 
     console.log("Connecting WebSocket...");
-    socket = new WebSocket('ws://localhost:1738'); // Change to your actual WebSocket server
-
+    // socket = new WebSocket('ws://localhost:1738'); // Change to your actual WebSocket server
+    socket = new WebSocket('wss://edutestbackend-wss.onrender.com'); 
     socket.onopen = () => {
         socket.send(JSON.stringify({ 
             type: 'socketAuth', 
@@ -74,6 +75,8 @@ function connectionWbSocket(userID) {
             timeLeft=90
             questions=[]
             generateQuiz(socket)
+            document.getElementById("preloader").style.display="none"
+
         }
      
         if (msgData.type === "socketQuizData"){
@@ -164,8 +167,14 @@ document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
         // User switched tab, start the timer
         awayTimer = setTimeout(() => {
-            Swal.fire("Quiz Irregularity", "You have been kicked out due to quiz irregularity!", "error", ).then(()=>{
+            localStorage.setItem("canDoExams","false")
+            localStorage.setItem("cdtReason","Test Irregularity")
+
+            Swal.fire("Test Irregularity", "You have been kicked out due to test irregularity!", "error", ).then(()=>{
                
+            }).then(()=>{
+                collapseExamRoom();
+                window.location.href="index.html"
             })
             alert("You have been away for more than 5 seconds!");
         }, 5000);
@@ -178,8 +187,8 @@ document.addEventListener("visibilitychange", () => {
 async function generateQuiz(socket){
     if(socket.readyState===1){
         try {
-            // const bUrl = 'https://edutestbackend.onrender.com/generateQuiz'
-            const bUrl = 'http://localhost:1738/generateQuiz'
+            const bUrl = 'https://edutestbackend-wss.onrender.com/generateQuiz'
+            // const bUrl = 'http://localhost:1738/generateQuiz'
             const response = await fetch(bUrl,{
                 method:'POST',
                 headers: {
@@ -321,7 +330,8 @@ function tocurrentQuiz(){
 
 
 function submitTest(){
-    console.log(userAnswers)
+    localStorage.setItem("canDoExams","false")
+    localStorage.setItem("cdtReason","Test Completed")
     document.getElementById("makingResult").style.display="flex"
     socket.send(JSON.stringify({
         type:"socketQuizSubmit",
@@ -343,9 +353,6 @@ document.querySelector(".deQuizes").addEventListener("click", function (event) {
     }
 });
 
-
-
-
 quizTimerWorker.onmessage = function (event) {
     if (event.data.action === "updateTime") {
         const timeLeft = event.data.timeLeft;
@@ -363,6 +370,7 @@ quizTimerWorker.onmessage = function (event) {
             socket.send(messageData);
         }
     } else if (event.data.action === "timeUp") {
+        console.log("to next quiz called")
         tonxtQuiz();
     }
 };
@@ -387,8 +395,8 @@ function formatTime(seconds) {
 async function collapseExamRoom(){
     try {
             
-        // const url="https://edutestbackend.onrender.com/removeSocket"
-        const url="http://localhost:1738/removeSocket"
+        const url="https://edutestbackend-wss.onrender.com/removeSocket"
+        // const url="http://localhost:1738/removeSocket"
         const response= await fetch(url,{
             method:"POST",
             headers:{
