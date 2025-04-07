@@ -98,9 +98,13 @@ async function saveToFirebase(file) {
     try {
       const formData = new FormData();
       formData.append("image",file)
-      formData.append("certDet",userDetQr)
+      // formData.append("certDet",userDetQr)
       formData.append("userUID",uid)
-      const url="https://edutestbackend-wss.onrender.com"
+      formData.append("topicDid",topic)
+      formData.append("date",getFormattedDate())
+      formData.append("score",score)
+      formData.append("grade",getFormattedDate() )
+      const url="https://edutestbackend-wss.onrender.com/savePdf"
       // const url="http://localhost:1738/savePdf"
       const response = await fetch(url, {
         method: "POST",
