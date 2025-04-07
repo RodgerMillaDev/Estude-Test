@@ -7,10 +7,33 @@ autoplay: true,
 path: animationPath 
 });
 
+strtBackend()
 
+async function strtBackend() {
+  try {
+      console.log("Sending request...");
+      const url = "https://edutestbackend-wss.onrender.com/Alooo";
+      const response = await fetch(url, {
+          method: "GET",
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();  // Expecting a JSON response
+      console.log(result.message);
+  } catch (error) {
+      console.error("Error fetching data:", error);
+  }
+}
 window.addEventListener("load",()=>{
     document.getElementById("preloader").style.display="none"
 })
+
 
 
 

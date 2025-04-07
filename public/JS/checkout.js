@@ -58,6 +58,8 @@ async function payNow(){
                         var refCode=result.data.reference;
                         var authUrl=result.data.authorization_url
                         localStorage.setItem('refCodePay',refCode)
+                        document.getElementById("checkoutPayNow").style.display="block"
+                        document.getElementById("checkoutPayFeeLoader").style.display="none"
                         window.location.href=authUrl
                     }
                             }catch(err){

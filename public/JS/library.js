@@ -126,7 +126,7 @@ function displayResults(results) {
                                         <p>${shortSnippet}</p>
                                     </div>
                                     <div class="smpTopicBtm">
-                                    <p>Level : <span>Intermideate</span></p>
+                                    <p>Level : <span>Intermediate</span></p>
                                         <button onclick="toTest('${item.title}')"> Take Test</button>
                                     </div>
                                 </div>

@@ -155,7 +155,17 @@
     overflow: hidden;
 }
 
-
+.affInBtn button{
+    width: 35px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    background: var(--ter2-color);
+    font-family: kanit;
+    color: aliceblue;
+    
+    height: 35px;
+}
 .adResults{
     position: absolute;
     z-index: 3;

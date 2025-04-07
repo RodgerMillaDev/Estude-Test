@@ -2587,7 +2587,7 @@ footer{
     color: var(--text-color);
 }
 .affInputWrap{
-    height: 45px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2599,7 +2599,7 @@ footer{
     overflow: hidden;
 }
 .affCont p{
-    height: 5vh;
+    height: 4vh;
 }
 .affBtns{
     width: 100%;
