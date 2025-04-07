@@ -16,7 +16,7 @@ console.log(urlTopic)
 let isTestCompleted = false;
 let userID;
 if(canDoExams=="true"){
-    firebase.auth().onAuthStateChanged((user)=>{
+    auth.onAuthStateChanged((user)=>{
         if(user){
     
              userID=user.uid
@@ -200,7 +200,7 @@ async function generateQuiz(socket){
     
             const result = await response.json()
             console.log(result)
-            questions =result.data
+            questions = result.data.map((q, i) => ({ ...q, index: i }));
             renderQuestions(questions)
             socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions,socketID:uid,userSocketAnswers:userAnswers,currentQuizNo:quizIndex,quizIndexTimeLeft:timeLeft}))
 
@@ -255,8 +255,6 @@ function renderQuestions(questions) {
     document.querySelector(".deQuizes").innerHTML = deQuiz;
     document.getElementById("preloader").style.display = "none";
 }
-
-
 function sltAnswer(questionIndex, answerIndex, selectedAnswer) {
     // Store the selected answer
     userAnswers[questionIndex] = {
@@ -269,7 +267,6 @@ function sltAnswer(questionIndex, answerIndex, selectedAnswer) {
     console.log(userAnswers[questionIndex]);
     console.log(userAnswers);
 }
-
 function analyseResult(testResult){
     var exmCheat=false;
     console.log(testResult)
@@ -285,14 +282,23 @@ document.getElementById("nextBtnQuiz").addEventListener('click',()=>{
     tonxtQuiz(quizIndex)
 })
 
-function tonxtQuiz(quizIndex){
-    
-  var quizes=document.querySelectorAll(".deQuiz")
-  var quizesWrap=document.querySelector(".deQuizes")
-  if(parseInt(quizIndex) < quizes.length -1){
+function tonxtQuiz(quizIndex) {
+    var quizes = document.querySelectorAll(".deQuiz");
+    var quizesWrap = document.querySelector(".deQuizes");
+
+    // If this is the last question, submit the test
+    if (quizIndex === quizes.length - 1) {
+        console.log('no more test');
+        submitTest();
+        return; // Stop here
+    }
+
+    // Move to the next question
     quizIndex++;
-    const offset = -quizIndex* 100 + '%'
-    quizesWrap.style.transform=`translateY(${offset})`
+    const offset = -quizIndex * 100 + '%';
+    quizesWrap.style.transform = `translateY(${offset})`;
+
+    // Send socket update
     const messageData = JSON.stringify({
         type: "examInProgress",
         socketID: uid,
@@ -301,19 +307,12 @@ function tonxtQuiz(quizIndex){
         quizIndexTimeLeft: 90,
         quizData: questions
     });
-    
     socket.send(messageData);
-  
-  }
-  if(quizIndex==8){
-    document.getElementById('nextBtnQuiz').innerText="Submit";
-  }
-  if(quizIndex+1 == quizes.length){
-    console.log('no more test')
-    submitTest()
-  }
 
-
+    // If we're now on the last question, change button to "Submit"
+    if (quizIndex === quizes.length - 1) {
+        document.getElementById('nextBtnQuiz').innerText = "Submit";
+    }
 }
 
 
@@ -371,7 +370,7 @@ quizTimerWorker.onmessage = function (event) {
         }
     } else if (event.data.action === "timeUp") {
         console.log("to next quiz called")
-        tonxtQuiz();
+        tonxtQuiz(quizIndex);
     }
 };
 

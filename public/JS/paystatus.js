@@ -76,7 +76,7 @@ async function checkPayment(){
                     console.log(result)
 
 
-                    firebase.firestore().collection("Users").doc(userID).update({
+                    dbFirestore.collection("Users").doc(userID).update({
                         signature:signature,
                         latestTestPaid:formatTimestamp(datePaid),
                     }).then(()=>{

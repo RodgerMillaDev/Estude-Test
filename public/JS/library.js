@@ -4,14 +4,12 @@ var authID=''
 var authEmail=''
 
 
-
-
-firebase.auth().onAuthStateChanged((user)=>{
+auth.onAuthStateChanged((user)=>{
     if(user){
         var uid=user.uid
         isAuth= true
         authID=uid
-        firebase.firestore().collection("Users").doc(authID).get().then((userCred)=>{
+        dbFirestore.collection("Users").doc(authID).get().then((userCred)=>{
             var userEmail = userCred.data().em;
              authEmail = userEmail;
             var userName = userCred.data().name;

@@ -102,7 +102,14 @@ function toReviews(){
   window.location.href='index.html#Reviews'
 }
 function toTrialTest(){
-  window.location.href=''
+  auth.onAuthStateChanged((user)=>{
+    if(user){
+      window.location.href='freeTest.html'
+
+    }else{
+      Swal.fire("Sign in first to proceed")
+    }
+  })
 }
 
 function toMyAccount(){

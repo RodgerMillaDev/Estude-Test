@@ -1,4 +1,4 @@
-firebase.auth().onAuthStateChanged((user)=>{
+auth.onAuthStateChanged((user)=>{
     if(user){
         document.getElementById("navAuth").innerText="Sign Out"
         

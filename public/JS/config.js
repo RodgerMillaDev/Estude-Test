@@ -1,4 +1,4 @@
-const firebaseConfig = {
+window.firebaseConfig = {
     apiKey: "AIzaSyDdJJdJsNAWSP30yC2gbkmjo_rBD6zWJ1A",
     authDomain: "estudetest.firebaseapp.com",
     projectId: "estudetest",
@@ -9,4 +9,11 @@ const firebaseConfig = {
   };
 
 
-  firebase.initializeApp(firebaseConfig)
+// Initialize Firebase only once
+if (!window.firebaseApp) {
+  window.firebaseApp = firebase.initializeApp(window.firebaseConfig);
+}
+
+// Global references for Firestore & Auth
+window.dbFirestore = firebase.firestore();
+window.auth = firebase.auth();

@@ -18,7 +18,7 @@ function toSignUp(){
             document.getElementById("authBtnLog").style.display = "none";
             document.getElementById("authBtnLoderLog").style.display = "flex";
     
-            firebase.auth().signInWithEmailAndPassword(em, pass)
+            auth.signInWithEmailAndPassword(em, pass)
                 .then((userCred) => {
                     var user = userCred.user;
                     if(user.emailVerified){
@@ -26,7 +26,7 @@ function toSignUp(){
                     
                     }else{
                             // Email is not verified, prevent sign-in
-                        firebase.auth().signOut(); // Sign the user out
+                        auth.signOut(); // Sign the user out
                         Swal.fire({
                             title: "Email Not Verified",
                             text: "Please verify your email before signing in.",
@@ -78,13 +78,13 @@ function toSignUp(){
             if(pass===cpass){
                 document.getElementById("authBtnSign").style.display = "none";
                 document.getElementById("authBtnLoderSign").style.display = "flex";
-                firebase.auth().createUserWithEmailAndPassword(em,pass).then((userCred)=>{
+                auth.createUserWithEmailAndPassword(em,pass).then((userCred)=>{
                     
                     var user = (userCred.user)
 
                     user.sendEmailVerification().then(function() {
 
-                        firebase.firestore().collection("Users").doc(user.uid).set({
+                        dbFirestore.collection("Users").doc(user.uid).set({
                             name:fn,
                             em:em,
                             uid:user.uid
@@ -145,7 +145,7 @@ function toSignUp(){
               inputPlaceholder: "Enter email"
             });
             if (email) {
-              firebase.auth().sendPasswordResetEmail(email)
+              auth.sendPasswordResetEmail(email)
             .then(() => {
               // Password reset email sent!
               // ..
@@ -160,29 +160,25 @@ function toSignUp(){
           }
     
 
-          
-          const db=firebase.firestore()
-
+    
 
           function contWithGoogle() {
               var provider = new firebase.auth.GoogleAuthProvider(); 
-            
-              firebase.auth()
-                .signInWithPopup(provider)
-                .then((result) => {
+    
+              auth.signInWithPopup(provider).then((result) => {
                   /** @type {firebase.auth.OAuthCredential} */
                   var user = result.user;
                   var photoURL=user.photoURL
                   var displayName=user.displayName
                   var email=user.email
                   var uid=user.uid
-                  db.collection("Users").doc(uid).get().then((doc)=>{
+                  dbFirestore.collection("Users").doc(uid).get().then((doc)=>{
                     if(doc.exists){
                       window.location.href="index.html"
           
                     }else{
           
-                      db.collection("Users").doc(user.uid).set({
+                      dbFirestore.collection("Users").doc(user.uid).set({
                         name:displayName,
                         em:email,
                         uid:user.uid
