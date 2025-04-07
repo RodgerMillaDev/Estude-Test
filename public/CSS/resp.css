@@ -161,14 +161,14 @@
     z-index: 3;
     background: rgb(248, 255, 255) ;
     position: absolute;
-    transform: scale(.6);
+    transform: scale(.7);
     border-radius: 10px;
     top:10%;
     box-shadow: 0 0 10px rgba(31, 61, 63, 0.096);
     z-index: 3;
     width: 200px;
-    height: fit-content;
-    left: -50px;
+    height: 70%;
+    left: -40px;
     display: flex;
     justify-content: center;
     overflow: hidden;
