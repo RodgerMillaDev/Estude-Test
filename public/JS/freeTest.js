@@ -15,7 +15,6 @@ let userID;
         if(user){
              userID=user.uid
              generateQuiz()
-             startQuizTimer(timeLeft)  
         }else{
             window.location.href="index.html"
         }
@@ -109,6 +108,8 @@ function renderQuestions(questions) {
 
     document.querySelector(".deQuizes").innerHTML = deQuiz;
     document.getElementById("preloader").style.display = "none";
+    startQuizTimer(timeLeft)  
+
 }
 function sltAnswer(questionIndex, answerIndex, selectedAnswer) {
     // Store the selected answer

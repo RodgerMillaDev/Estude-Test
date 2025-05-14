@@ -25,9 +25,21 @@ function fromAff(){
 
         // Inject UID between base and the rest
         let newUrl = `${base}?${uid}?${rest}`;
+        console.log(newUrl)
         window.location.href=(newUrl)
 
   }else{
     Swal.fire("Sign In Required", "Kindly sign in to proceed to test", "info")
   }
+}
+
+function pasteLink() {
+  const input = document.getElementById("affLink");
+  navigator.clipboard.readText()
+    .then(text => {
+      input.value = text;
+    })
+    .catch(err => {
+      console.error('Failed to read clipboard contents: ', err);
+    });
 }

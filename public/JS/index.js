@@ -121,9 +121,9 @@ function toAffiliation(){
 function toAbout(){
   window.location.href='index.html#About'
 }
-function toReviews(){
-  window.location.href='index.html#Reviews'
-}
+// function toReviews(){
+//   window.location.href='index.html#Reviews'
+// }
 function toTrialTest(){
   auth.onAuthStateChanged((user)=>{
     if(user){
