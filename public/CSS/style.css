@@ -1325,8 +1325,11 @@ footer{
 }
 .checkTopicWrap p{
     color: rgb(108, 124, 143);
-    font-size: 15px;
+    font-size: 14px;
 
+}
+#checkoutTopicMini{
+    font-weight: 800;
 }
 .checkTopicWrap .boxTitle{
     color: var(--sec-color);
@@ -1355,7 +1358,7 @@ footer{
 
 }
 .checkTopicstat p{
-    font-size: 15px;
+    font-size: 14px;
 }
 .checkTopicstat i{
     margin-right: 10px;

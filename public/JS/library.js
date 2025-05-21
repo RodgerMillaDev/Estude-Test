@@ -23,8 +23,6 @@ auth.onAuthStateChanged((user)=>{
     }else{
          isAuth=false
     }
-
-    
 })
 
 
@@ -148,7 +146,7 @@ function toTest(e){
        
        localStorage.setItem("EstudeUserID",authID)
        localStorage.setItem("EstudeUserEmail",authEmail)
-       window.location.href='checkout.html'+"?"+authID+"?"+e
+       window.location.href='checkout.html'+"?"+e+"?"+authID
 
       
    }else{

@@ -1,21 +1,29 @@
 const deURL= decodeURIComponent(window.location.search)
-const SU=deURL.split("?")
-const uid= SU[1]
-const urlTopic= SU[2]
-var offUID=localStorage.getItem("EstudeUserID")
-var offEmail=localStorage.getItem("EstudeUserEmail")
-document.getElementById("payEmailAdress").value=offEmail;
-
-if(uid !=offUID){
-    Swal.fire("Error! Incorrect credentials").then(()=>{
+const SU = deURL.split("?");
+let authEmail='';
+let urlTopic;
+let clnName;
+if (SU.length > 1 && SU[1].trim() !== "") {
+auth.onAuthStateChanged((user)=>{
+    if(user){
+         uid=user.uid
+        dbFirestore.collection("Users").doc(uid).get().then((userCred)=>{
+            var userEmail = userCred.data().em;
+             authEmail = userEmail;
+             userName = userCred.data().name;
+             clnName=userName;
+            localStorage.setItem("userNameEst",userName)
+            document.getElementById("payEmailAdress").value=authEmail
+       })
+    }else{
+         isAuth=false;
         window.location.href='library.html'
 
-    })
-}
-var userNameEst=localStorage.getItem("userNameEst")
-var clnName=userNameEst.replace(/\s+/g, "-")
-console.log(clnName)
-
+    }
+})
+const urlTopicD= SU[1]
+ urlTopic=urlTopicD.replace("%20"," ")
+document.getElementById("payEmailAdress").value=authEmail;
 
 if(urlTopic=='' || undefined){
    window.location.href='library.html'
@@ -25,11 +33,13 @@ if(urlTopic=='' || undefined){
 
 }
 
-if(uid=="" || uid ==null){
-    window.location.href="index.html"
-}else{
 
+} else {
+     window.location.href='library.html'
 }
+
+
+
 
 async function payNow(){
     var payEmail = document.getElementById("payEmailAdress").value;
@@ -40,7 +50,6 @@ async function payNow(){
                 document.getElementById("checkoutPayNow").style.display="none"
                 document.getElementById("checkoutPayFeeLoader").style.display="block"
                 var url ="https://edutestbackend-wss.onrender.com/payTest"
-                // var url ="http://localhost:1738/payTest"
                 const response = await fetch(url,{
 
                     method:"POST",

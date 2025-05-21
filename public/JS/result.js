@@ -5,8 +5,24 @@ var score=parseInt(SU[2])
 var topic=SU[3]
 var cheat=SU[4]
 var perc=score*10;
-var userName=localStorage.getItem("userNameEst")
-var userEmail=localStorage.getItem("userEmailEst")
+var userName;
+var userEmail;
+auth.onAuthStateChanged((user)=>{
+    if(user){
+        var uid=user.uid
+        isAuth= true
+        authID=uid
+        dbFirestore.collection("Users").doc(authID).get().then((userCred)=>{
+             userEmail = userCred.data().em;
+             userName = userCred.data().name;
+           
+       })
+    
+    }else{
+         isAuth=false
+    }
+})
+
 
 window.history.pushState(null, "", window.location.href);
 window.addEventListener("popstate", function () {

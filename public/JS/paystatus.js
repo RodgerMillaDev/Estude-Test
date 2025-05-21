@@ -22,8 +22,6 @@ if(actTopic=='' || actTopic==undefined ||!actTopic){
 
 async function checkPayment(){
 
-
-
     var stBtn=document.getElementById("statusBtn").innerText;
     var refCode=localStorage.getItem("refCodePay")
     document.getElementById("statusBtn").style.display="none"
@@ -32,7 +30,6 @@ async function checkPayment(){
         try {
         
             const cfmUrl="https://edutestbackend-wss.onrender.com/trxnStatus"
-            // const cfmUrl="http://localhost:1738/trxnStatus"
             const response = await fetch(cfmUrl,{
             method:"POST",
             headers:{
