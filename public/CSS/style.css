@@ -3099,3 +3099,23 @@ height: 60px;
 justify-content: space-between;
 align-items: center;
 }
+#examLoad{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    justify-content: center;
+    background: aliceblue;
+    align-items: center;
+    flex-direction: column;
+}
+#examLoad img{
+    width: 20%;
+    margin-bottom: 10px;
+}
+#examLoad p{
+    text-align: center;
+    width: 60%;
+    margin-bottom: 10px;
+}

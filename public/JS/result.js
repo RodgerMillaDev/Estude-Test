@@ -7,6 +7,7 @@ var cheat=SU[4]
 var perc=score*10;
 var userName;
 var userEmail;
+
 auth.onAuthStateChanged((user)=>{
     if(user){
         var uid=user.uid
@@ -15,6 +16,8 @@ auth.onAuthStateChanged((user)=>{
         dbFirestore.collection("Users").doc(authID).get().then((userCred)=>{
              userEmail = userCred.data().em;
              userName = userCred.data().name;
+             document.getElementById("certOwner").innerText=userName;
+
            
        })
     
@@ -50,7 +53,6 @@ document.getElementById("circleGrade").innerText=getGrade(score)
 document.getElementById("scorePerc").innerText=perc
 document.getElementById("percentageValue").textContent=perc+"%"
 document.getElementById("progress--circle").style.strokeDashoffset=progress
-console.log("Your Grade: " + getGrade(score)); // Output: Your Grade: B+
 
 var userDetQr=uid+"?"+topic+"?"+cheat+"?"+getGrade(score)+"?"+perc;
 
@@ -62,9 +64,7 @@ function getFormattedDate() {
 
     return `${day}/${month}/${year}`;
 }
-console.log(userName)
 document.getElementById("certDate").innerText=getFormattedDate()
-document.getElementById("certOwner").innerText=userName;
 document.getElementById("certTopic").innerText=topic;
 document.getElementById("certGrade").innerText=getGrade(score);
 
@@ -107,9 +107,6 @@ async function downloadCertificate() {
 
 }
     
-
-   
-
 async function saveToFirebase(file) {
     try {
       const formData = new FormData();

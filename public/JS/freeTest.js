@@ -34,7 +34,6 @@ document.addEventListener("visibilitychange", () => {
             }).then(()=>{
                 window.location.href="index.html"
             })
-            alert("You have been away for more than 5 seconds!");
         }, 5000);
     } else {
         // User returned, clear the timer

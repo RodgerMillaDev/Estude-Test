@@ -4,6 +4,10 @@ const uid = SU[1];
 let userAnswers = [];
 let urlTopic = SU[4];
 let questions;
+let lastRenderedQuizIndex = null; // Track last rendered quiz index
+let suppressAutoScroll = false;
+let suppressTimer = null;
+let currentQuizIndex;
 let quizIndex=0; // Current question index
 let timeLeft = 90; // Each question has 1.5 minutes
 let timerInterval;
@@ -11,7 +15,6 @@ let timerInterval;
 const quizTimerWorker = new Worker("JS/timerWorker.js");
 var canDoExams=localStorage.getItem("canDoExams")
 var cdtReason=localStorage.getItem("cdtReason")
-console.log(urlTopic)
 
 let isTestCompleted = false;
 let userID;
@@ -43,7 +46,7 @@ if(canDoExams=="true"){
 let socket;
 
 function connectionWbSocket(userID) {
-
+    document.getElementById("examLoad").style.display="flex"
     console.log("Connecting WebSocket...");
     // socket = new WebSocket('ws://localhost:1738'); // Change to your actual WebSocket server
     socket = new WebSocket('wss://edutestbackend-wss.onrender.com'); 
@@ -58,6 +61,7 @@ function connectionWbSocket(userID) {
         
         }));
         document.getElementById("testTopicExam").innerText = urlTopic;
+        document.getElementById("examLoad").style.display="none"
         console.log('WebSocket connected');
 
         
@@ -66,8 +70,6 @@ function connectionWbSocket(userID) {
 
     socket.onmessage = (wsText) => {
         const msgData = JSON.parse(wsText.data);
-        console.log(msgData.type)
-
         if (msgData.type === "socketAuth") {
             console.log(msgData.status);
             currentQuizNo=0
@@ -75,44 +77,51 @@ function connectionWbSocket(userID) {
             timeLeft=90
             questions=[]
             generateQuiz(socket)
-            document.getElementById("preloader").style.display="none"
-
         }
-     
         if (msgData.type === "socketQuizData"){
              timeLeft=msgData.status.quizIndexTimeLeft;
              questions=msgData.status.quizData;
              renderQuestions(questions)
              startQuizTimer(timeLeft)           
         }
-        if (msgData.type === "examInProgress"){
-            quizIndex = msgData.status.currentQuizNo;
-            timeLeft = parseInt(msgData.status.quizIndexTimeLeft);
-            
+
+if (msgData.type === "examInProgress") {
+    quizIndex = msgData.status.currentQuizNo;
+    currentQuizIndex = quizIndex;
+    timeLeft = parseInt(msgData.status.quizIndexTimeLeft);
+
     let newQuestions = msgData.status.quizData || [];
     let newUserAnswers = msgData.status.userSocketAnswers || [];
 
-    // ✅ Preserve user-selected answers before updating
     userAnswers = newQuestions.map((q, index) => {
-        let existingAnswer = userAnswers[index]; // Get the previously selected answer
-        let backendAnswer = newUserAnswers[index]; // Get the answer from the backend
+        let existingAnswer = userAnswers[index];
+        let backendAnswer = newUserAnswers[index];
 
         return existingAnswer && existingAnswer.selectedAnswer
-            ? existingAnswer // Keep user selection if available
-            : backendAnswer || { answerIndex: null, selectedAnswer: "" }; // Use backend if no previous selection
+            ? existingAnswer
+            : backendAnswer || { answerIndex: null, selectedAnswer: "" };
     });
 
-    // ✅ Update the questions list
-          questions = newQuestions;
-  
-            renderQuestions(questions)
-            startQuizTimer(timeLeft)
-            tocurrentQuiz(quizIndex)
-        };
+    questions = newQuestions;
+
+    // ✅ Only render when quiz index has changed
+    if (quizIndex !== lastRenderedQuizIndex) {
+        renderQuestions(questions);
+        lastRenderedQuizIndex = quizIndex;
+    }
+
+    startQuizTimer(timeLeft);
+    tocurrentQuiz(quizIndex);
+}
+
+
         if (msgData.type === "socketQuizSubmit"){
-            localStorage.setItem("canDoExams","false")
-            analyseResult(msgData.dataResult);
-            collapseExamRoom()
+           if (msgData.type === "socketQuizSubmit") {
+                console.log("Received full message:", msgData); // ✅ confirm full payload
+                localStorage.setItem("canDoExams", "false");
+                analyseResult(msgData.dataResult); // ✅ this should be an array
+                collapseExamRoom();
+          }
         }
         if (msgData.type === 'examBlocked') {
             console.log(msgData)
@@ -176,7 +185,6 @@ document.addEventListener("visibilitychange", () => {
                 collapseExamRoom();
                 window.location.href="index.html"
             })
-            alert("You have been away for more than 5 seconds!");
         }, 5000);
     } else {
         // User returned, clear the timer
@@ -200,7 +208,9 @@ async function generateQuiz(socket){
     
             const result = await response.json()
             console.log(result)
+        
             questions = result.data.map((q, i) => ({ ...q, index: i }));
+            document.getElementById("examLoad").style.display="none"
             renderQuestions(questions)
             socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions,socketID:uid,userSocketAnswers:userAnswers,currentQuizNo:quizIndex,quizIndexTimeLeft:timeLeft}))
 
@@ -213,6 +223,7 @@ async function generateQuiz(socket){
   
 }
 function renderQuestions(questions) {
+    console.log("im rendered")
     let deQuiz = "";
 
     questions.forEach((question) => {
@@ -263,9 +274,7 @@ function sltAnswer(questionIndex, answerIndex, selectedAnswer) {
         selectedAnswer
     };
 
-    // Re-render questions to reflect selection
-    console.log(userAnswers[questionIndex]);
-    console.log(userAnswers);
+
 }
 function analyseResult(testResult){
     var exmCheat=false;
@@ -281,51 +290,53 @@ function analyseResult(testResult){
 document.getElementById("nextBtnQuiz").addEventListener('click',()=>{
     tonxtQuiz(quizIndex)
 })
+function tocurrentQuiz(indexFromBackend) {
+    if (suppressAutoScroll) return;
 
-function tonxtQuiz(quizIndex) {
-    var quizes = document.querySelectorAll(".deQuiz");
-    var quizesWrap = document.querySelector(".deQuizes");
+    if (indexFromBackend !== currentQuizIndex) {
+        currentQuizIndex = indexFromBackend;
+        const quizesWrap = document.querySelector(".deQuizes");
+        const offset = -currentQuizIndex * 100 + '%';
+        quizesWrap.style.transform = `translateY(${offset})`;
+    }
+}
 
-    // If this is the last question, submit the test
-    if (quizIndex === quizes.length - 1) {
-        console.log('no more test');
+function tonxtQuiz() {
+    const quizes = document.querySelectorAll(".deQuiz");
+    const quizesWrap = document.querySelector(".deQuizes");
+
+    if (currentQuizIndex === quizes.length - 1) {
         submitTest();
-        return; // Stop here
+        return;
     }
 
-    // Move to the next question
-    quizIndex++;
-    const offset = -quizIndex * 100 + '%';
+    currentQuizIndex++;
+    const offset = -currentQuizIndex * 100 + '%';
     quizesWrap.style.transform = `translateY(${offset})`;
+    lastRenderedQuizIndex = currentQuizIndex
 
-    // Send socket update
+    // Suppress backend scrolling for 2 seconds
+    suppressAutoScroll = true;
+    clearTimeout(suppressTimer);
+    suppressTimer = setTimeout(() => {
+        suppressAutoScroll = false;
+    }, 2000);
+
     const messageData = JSON.stringify({
         type: "examInProgress",
         socketID: uid,
-        currentQuizNo: quizIndex,
+        currentQuizNo: currentQuizIndex,
         userSocketAnswers: userAnswers,
         quizIndexTimeLeft: 90,
         quizData: questions
     });
     socket.send(messageData);
 
-    // If we're now on the last question, change button to "Submit"
-    if (quizIndex === quizes.length - 1) {
+    if (currentQuizIndex === quizes.length - 1) {
         document.getElementById('nextBtnQuiz').innerText = "Submit";
     }
 }
 
-
-function tocurrentQuiz(){
-    
-  var quizesWrap=document.querySelector(".deQuizes")
-  if(quizIndex){
-    const offset = -quizIndex* 100 + '%'
-    quizesWrap.style.transform=`translateY(${offset})`
-  
-  }
-
-}
 
 
 function submitTest(){

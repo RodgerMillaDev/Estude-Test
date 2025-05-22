@@ -28,12 +28,22 @@ function fromAff() {
             showCancelButton: true,
             confirmButtonColor: "#11499E",
             cancelButtonColor: "#11499E", 
-            confirmButtonText: "No, Sign out",
+            confirmButtonText: "No, sign out",
             cancelButtonText: "Yes, continue",
           }).then((result) => {
+               
             if (result.isConfirmed) {
-                  const affLink = document.getElementById("affLink").value.trim();
-                  const expectedDomain = "https://estudetest.web.app/checkout.html";
+                  auth.signOut().then(() => {
+              window.location.href="index.html";    
+                }).catch((error) => {
+          
+                  console.log(error)
+                  // An error happened.
+                }); 
+                // Wrong user 
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+           const affLink = document.getElementById("affLink").value.trim();
+                  const expectedDomain = "https://estudetest.com/auth.html";
                   const parts = affLink.split("?");
                   if (
                     parts.length === 3 &&
@@ -48,15 +58,6 @@ function fromAff() {
                     Swal.fire("Invalid Link", "Please enter a valid test link.", "error");
                   }
                 // Right User
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-              auth.signOut().then(() => {
-              window.location.href="index.html";    
-                }).catch((error) => {
-          
-                  console.log(error)
-                  // An error happened.
-                }); 
-                // Wrong user 
             }
           });   
 
