@@ -69,7 +69,7 @@ document.getElementById("certTopic").innerText=topic;
 document.getElementById("certGrade").innerText=getGrade(score);
 
 async function downloadCertificate() {
-    document.getElementById("qrImage").src=`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://estudetest.web.app/qrCheck.html?${userDetQr}`
+    document.getElementById("qrImage").src=`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://estudetest.com/qrCheck.html?${userDetQr}`
     const { jsPDF } = window.jspdf;
 
     const certificate = document.getElementById("certWrap");

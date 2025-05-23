@@ -157,7 +157,6 @@ function tonxtQuiz() {
     quizIndex++;
     const offset = -quizIndex * 100 + '%';
     quizesWrap.style.transform = `translateY(${offset})`;
-    console.log("tuko question number " + (quizIndex + 1));
     startQuizTimer(90);
   
     // If we're now on the last question, update the button text
@@ -217,7 +216,6 @@ quizTimerWorker.onmessage = function (event) {
             });
         
     } else if (event.data.action === "timeUp") {
-        console.log("to next quiz called")
         tonxtQuiz(quizIndex);
     }
 };

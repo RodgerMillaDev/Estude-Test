@@ -61,7 +61,6 @@ function connectionWbSocket(userID) {
         
         }));
         document.getElementById("testTopicExam").innerText = urlTopic;
-        document.getElementById("examLoad").style.display="none"
         console.log('WebSocket connected');
 
         
@@ -210,7 +209,6 @@ async function generateQuiz(socket){
             console.log(result)
         
             questions = result.data.map((q, i) => ({ ...q, index: i }));
-            document.getElementById("examLoad").style.display="none"
             renderQuestions(questions)
             socket.send(JSON.stringify({type:"socketQuizData", socketQuizData:questions,socketID:uid,userSocketAnswers:userAnswers,currentQuizNo:quizIndex,quizIndexTimeLeft:timeLeft}))
 
@@ -218,12 +216,13 @@ async function generateQuiz(socket){
              console.log(error)
         }
     }else{
-        Console.log("socket haiko on")
     }
   
 }
 function renderQuestions(questions) {
-    console.log("im rendered")
+    document.getElementById("examLoad").style.display="none"
+
+    console.log("questions rendered")
     let deQuiz = "";
 
     questions.forEach((question) => {
@@ -380,7 +379,6 @@ quizTimerWorker.onmessage = function (event) {
             socket.send(messageData);
         }
     } else if (event.data.action === "timeUp") {
-        console.log("to next quiz called")
         tonxtQuiz(quizIndex);
     }
 };

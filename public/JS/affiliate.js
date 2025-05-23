@@ -44,6 +44,7 @@ function fromAff() {
             } else if (result.dismiss === Swal.DismissReason.cancel) {
            const affLink = document.getElementById("affLink").value.trim();
                   const expectedDomain = "https://estudetest.com/auth.html";
+                  const newCheckDomain = "https://estudetest.com/checkout.html";
                   const parts = affLink.split("?");
                   if (
                     parts.length === 3 &&
@@ -51,7 +52,7 @@ function fromAff() {
                     parts[1].trim() !== "" && // Title
                     parts[2].trim() !== ""    // Random string
                   ) {
-                    const newUrl = `${expectedDomain}?${parts[1]}?${parts[2]}`;
+                    const newUrl = `${newCheckDomain}?${parts[1]}?${parts[2]}`;
                     window.location.href = newUrl;
                   } else {
                     console.error("Invalid link format");
