@@ -1811,6 +1811,7 @@ footer{
 #Library{
     width: 100vw;
     background: rgb(255, 255, 255);
+    background: aliceblue;
 
     height: 100vh;
 }

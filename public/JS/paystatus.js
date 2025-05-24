@@ -9,12 +9,12 @@ const cleanUrlTopic=urlTopic.split("&")
 const cleanUrlName=urlName.split("&")
 const ref = cleanUrlName[2]
 const refNo=ref.replace("reference=","")
-const actTopic=cleanUrlTopic[0]
+const actTopic=(cleanUrlTopic[0]).replace("%20"," ")
 const actUserNAME=cleanUrlName[0]
 const clnm=actUserNAME.replace("-", " ")
 var isPaid=false
 var signature;
-
+console.log(urlTopic)
 
 if(actTopic=='' || actTopic==undefined ||!actTopic){
     window.location.href="index.html"

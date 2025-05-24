@@ -2,6 +2,7 @@ const deURL= decodeURIComponent(window.location.search)
 const SU = deURL.split("?");
 let authEmail='';
 let urlTopic;
+let urlTopicClean;
 let clnName;
 if (SU.length > 1 && SU[1].trim() !== "") {
 auth.onAuthStateChanged((user)=>{
@@ -22,14 +23,16 @@ auth.onAuthStateChanged((user)=>{
     }
 })
 const urlTopicD= SU[1]
- urlTopic=urlTopicD.replace("%20"," ")
+urlTopic= SU[1].replace(" ","%20")
+
+urlTopicClean=urlTopicD.replace("%20"," ")
 document.getElementById("payEmailAdress").value=authEmail;
 
 if(urlTopic=='' || undefined){
    window.location.href='library.html'
 }else{
-    document.getElementById("checkoutTopic").innerText=urlTopic;
-    document.getElementById("checkoutTopicMini").innerText=urlTopic;
+    document.getElementById("checkoutTopic").innerText=urlTopicClean;
+    document.getElementById("checkoutTopicMini").innerText=urlTopicClean;
 
 }
 
@@ -38,13 +41,8 @@ if(urlTopic=='' || undefined){
      window.location.href='library.html'
 }
 
-
-
-
 async function payNow(){
     var payEmail = document.getElementById("payEmailAdress").value;
-
-
         if(payEmail!=''){
             try{
                 document.getElementById("checkoutPayNow").style.display="none"
@@ -57,8 +55,6 @@ async function payNow(){
                         "Content-type":"application/json",
                     },
                     body:JSON.stringify({uid,payEmail,urlTopic,clnName})
-
-
                 })
 
                     const result= await response.json()

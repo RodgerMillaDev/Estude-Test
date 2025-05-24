@@ -69,21 +69,18 @@ document.getElementById("certTopic").innerText=topic;
 document.getElementById("certGrade").innerText=getGrade(score);
 
 async function downloadCertificate() {
-    document.getElementById("qrImage").src=`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://estudetest.com/qrCheck.html?${userDetQr}`
+    document.getElementById("qrImage").src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://estudetest.com/qrCheck.html?${userDetQr}`;
     const { jsPDF } = window.jspdf;
 
     const certificate = document.getElementById("certWrap");
 
-    // Capture the div as a canvas
     const canvas = await html2canvas(certificate, {
-        scale: 2, // Higher scale for better quality
-        useCORS: true // Handles external images if any
+        scale: 2,
+        useCORS: true
     });
 
     const imgData = canvas.toDataURL("image/png");
-    const certImage=imgData
 
-    // Initialize jsPDF with landscape mode
     const pdf = new jsPDF({
         orientation: "landscape",
         unit: "mm",
@@ -92,47 +89,51 @@ async function downloadCertificate() {
 
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
-
-    // Adjust image size to fit the PDF
     const imgWidth = pageWidth - 20;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
     pdf.addImage(imgData, "PNG", 10, (pageHeight - imgHeight) / 2, imgWidth, imgHeight);
-    pdf.save("EstudeCert.pdf");
+    pdf.save("EstudeCert.pdf"); // Not async, so we simulate a short delay
 
-        // Convert base64 image to Blob
+    // Wait a little to ensure file download starts before uploading
+    setTimeout(async () => {
         const blob = await fetch(imgData).then(res => res.blob());
         const file = new File([blob], "certificate.png", { type: "image/png" });
-    saveToFirebase(file)
-
+        
+        // Move Swal.fire here, inside saveToFirebase success
+        await saveToFirebase(file);
+    }, 500); // 0.5 second delay
 }
-    
+
 async function saveToFirebase(file) {
     try {
-      const formData = new FormData();
-      formData.append("image",file)
-      // formData.append("certDet",userDetQr)
-      formData.append("userUID",uid)
-      formData.append("topicDid",topic)
-      formData.append("date",getFormattedDate())
-      formData.append("score",score)
-      formData.append("grade",getFormattedDate() )
-      const url="https://edutestbackend-wss.onrender.com/savePdf"
-      // const url="http://localhost:1738/savePdf"
-      const response = await fetch(url, {
-        method: "POST",
-        body: formData,
-      });
-  
-      const result = await response.json();
-      console.log(result); // { message: "PDF uploaded successfully", url: "https://..." }
-      Swal.fire("Success", "Certificate downloaded!", "success").then(()=>{
-        window.location.href="index.html"
-      })
-  
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("userUID", uid);
+        formData.append("topicDid", topic);
+        formData.append("date", getFormattedDate());
+        formData.append("score", score);
+        formData.append("grade", getFormattedDate());
+
+        const url = "https://edutestbackend-wss.onrender.com/savePdf";
+
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData,
+        });
+
+        const result = await response.json();
+        console.log(result);
+
+        // Show Swal after Firebase saving is successful
+        Swal.fire("Success", "Certificate downloaded!", "success").then(() => {
+          window.location.href="index.html"
+         });
+
     } catch (err) {
-      console.error(err);
+        console.error(err);
+        Swal.fire("Error", "Something went wrong saving the certificate.", "error");
     }
-  }
+}
 
 
